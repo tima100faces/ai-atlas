@@ -1,0 +1,109 @@
+title: "AI Engineering"
+author: "Chip Huyen"
+versions:
+  en:
+    source_pdf: "original/AI Engineering by Chip Huyen.pdf"
+    language: "en"
+  ru:
+    source_pdf: "original/Хьюен Ч. - AI-инженерия - 2026.pdf"
+    language: "ru"
+
+chapters:
+  - id: "00-preface"
+    title:
+      en: "Preface"
+      ru: "Предисловие"
+    file:
+      en: "en/00-preface.md"
+      ru: "ru/00-preface.md"
+    order: 0
+
+  - id: "01-introduction"
+    title:
+      en: "Introduction to Building AI Applications with Foundation Models"
+      ru: "Глава 1. Основы создания AI-приложений с использованием базовых моделей"
+    file:
+      en: "en/01-introduction.md"
+      ru: "ru/01-introduction.md"
+    order: 1
+
+  - id: "02-understanding-foundation-models"
+    title:
+      en: "Understanding Foundation Models"
+      ru: "Глава 2. Знакомство с базовыми моделями"
+    file:
+      en: "en/02-understanding-foundation-models.md"
+      ru: "ru/02-understanding-foundation-models.md"
+    order: 2
+
+  - id: "03-evaluation-methodology"
+    title:
+      en: "Evaluation Methodology"
+      ru: "Глава 3. Методология оценки"
+    file:
+      en: "en/03-evaluation-methodology.md"
+      ru: "ru/03-evaluation-methodology.md"
+    order: 3
+
+  - id: "04-evaluate-ai-systems"
+    title:
+      en: "Evaluate AI Systems"
+      ru: "Глава 4. Оценка систем AI"
+    file:
+      en: "en/04-evaluate-ai-systems.md"
+      ru: "ru/04-evaluate-ai-systems.md"
+    order: 4
+
+  - id: "05-prompt-engineering"
+    title:
+      en: "Prompt Engineering"
+      ru: "Глава 5. Промт-инжиниринг"
+    file:
+      en: "en/05-prompt-engineering.md"
+      ru: "ru/05-prompt-engineering.md"
+    order: 5
+
+  - id: "06-rag-and-agents"
+    title:
+      en: "RAG and Agents"
+      ru: "Глава 6. RAG и агенты"
+    file:
+      en: "en/06-rag-and-agents.md"
+      ru: "ru/06-rag-and-agents.md"
+    order: 6
+
+  - id: "07-finetuning"
+    title:
+      en: "Finetuning"
+      ru: "Глава 7. Дообучение, или Тонкая настройка"
+    file:
+      en: "en/07-finetuning.md"
+      ru: "ru/07-finetuning.md"
+    order: 7
+
+  - id: "08-dataset-engineering"
+    title:
+      en: "Dataset Engineering"
+      ru: "Глава 8. Проектирование наборов данных"
+    file:
+      en: "en/08-dataset-engineering.md"
+      ru: "ru/08-dataset-engineering.md"
+    order: 8
+
+  - id: "09-inference-optimization"
+    title:
+      en: "Inference Optimization"
+      ru: "Глава 9. Оптимизация вывода"
+    file:
+      en: "en/09-inference-optimization.md"
+      ru: "ru/09-inference-optimization.md"
+    order: 9
+
+  - id: "10-ai-engineering-architecture"
+    title:
+      en: "AI Engineering Architecture and User Feedback"
+      ru: "Глава 10. Архитектура AI-инженерии и обратная связь от пользователей"
+    file:
+      en: "en/10-ai-engineering-architecture.md"
+      ru: "ru/10-ai-engineering-architecture.md"
+    order: 10

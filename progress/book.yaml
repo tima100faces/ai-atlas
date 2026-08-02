@@ -1,8 +1,117 @@
-updated_at: "2026-08-02T10:30:00+03:00"
+updated_at: "2026-08-02T11:00:00+03:00"
 
 overall:
   percent: 0
-  current_chapter_id: null
+  current_chapter_id: "01-introduction"
   current_language: "ru"
 
-chapters: {}
+chapters:
+  "00-preface":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "01-introduction":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "02-understanding-foundation-models":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "03-evaluation-methodology":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "04-evaluate-ai-systems":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "05-prompt-engineering":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "06-rag-and-agents":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "07-finetuning":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "08-dataset-engineering":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "09-inference-optimization":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""
+
+  "10-ai-engineering-architecture":
+    status: "todo"
+    language_progress:
+      en:
+        status: "todo"
+        notes: ""
+      ru:
+        status: "todo"
+        notes: ""

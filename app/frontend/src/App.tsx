@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Reader from './Reader'
 
 interface Progress {
   book_percent: number
@@ -74,36 +75,87 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
   )
 }
 
-function Sidebar() {
+function Dashboard({ onNavigate }: { onNavigate: (view: string) => void }) {
+  const [progress, setProgress] = useState<Progress | null>(null)
+
+  useEffect(() => {
+    fetch('/api/progress/overall')
+      .then(r => r.json())
+      .then(data => {
+        if (data.detail) return
+        setProgress(data)
+      })
+      .catch(() => {})
+  }, [])
+
   return (
-    <aside style={{
-      width: 260, height: '100vh', background: 'var(--bg-sidebar)',
-      borderRight: '1px solid var(--border)', padding: 20,
-      display: 'flex', flexDirection: 'column', gap: 8,
-      position: 'fixed', left: 0, top: 0,
-    }}>
-      <h2 style={{ fontSize: 18, fontWeight: 600, color: 'var(--accent)', marginBottom: 20 }}>
-        AI Atlas
-      </h2>
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-primary)' }}>
+      {/* Sidebar */}
+      <aside style={{
+        width: 260, minWidth: 260, height: '100vh',
+        background: 'var(--bg-sidebar)', borderRight: '1px solid var(--border)',
+        padding: 20, display: 'flex', flexDirection: 'column', gap: 8,
+        position: 'sticky', top: 0,
+      }}>
+        <h2 style={{ fontSize: 18, fontWeight: 600, color: 'var(--accent)', marginBottom: 20 }}>
+          AI Atlas
+        </h2>
 
-      <Section title="Book">
-        <NavItem label="Reader" />
-        <NavItem label="Progress" />
-      </Section>
+        <Section title="Book">
+          <NavItem label="Reader" active={false} onClick={() => onNavigate('reader')} />
+          <NavItem label="Progress" />
+        </Section>
 
-      <Section title="Courses">
-        <NavItem label="Anthropic" />
-      </Section>
+        <Section title="Courses">
+          <NavItem label="Anthropic" />
+        </Section>
 
-      <Section title="Notes">
-        <NavItem label="Concepts" />
-        <NavItem label="All Notes" />
-      </Section>
+        <Section title="Notes">
+          <NavItem label="Concepts" />
+          <NavItem label="All Notes" />
+        </Section>
 
-      <div style={{ marginTop: 'auto' }}>
-        <NavItem label="Dashboard" active />
+        <div style={{ marginTop: 'auto' }}>
+          <NavItem label="Dashboard" active />
+        </div>
+      </aside>
+
+      {/* Main */}
+      <div style={{ flex: 1, padding: 40 }}>
+        <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>
+          Welcome to AI Atlas
+        </h1>
+        <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginBottom: 32 }}>
+          Your personal AI Engineering learning platform
+        </p>
+
+        {progress && (
+          <div style={{
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: 16, marginBottom: 32,
+          }}>
+            <StatCard label="Book Progress" value={`${progress.book_percent}%`} />
+            <StatCard
+              label="Current Chapter"
+              value={progress.current_chapter_id || 'Not started'}
+            />
+            <StatCard label="Language" value={progress.current_language?.toUpperCase() || '—'} />
+          </div>
+        )}
+
+        {/* Quick action to reader */}
+        <button
+          onClick={() => onNavigate('reader')}
+          style={{
+            padding: '12px 24px', borderRadius: 8, border: 'none',
+            background: 'var(--accent)', color: '#fff',
+            cursor: 'pointer', fontSize: 14, fontWeight: 500,
+          }}
+        >
+          Open Reader →
+        </button>
       </div>
-    </aside>
+    </div>
   )
 }
 
@@ -121,57 +173,19 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   )
 }
 
-function NavItem({ label, active }: { label: string; active?: boolean }) {
+function NavItem({ label, active, onClick }: { label: string; active?: boolean; onClick?: () => void }) {
   return (
-    <div style={{
-      padding: '6px 8px', borderRadius: 6, fontSize: 13,
-      color: active ? 'var(--text-primary)' : 'var(--text-secondary)',
-      background: active ? 'var(--bg-secondary)' : 'transparent',
-      cursor: 'pointer',
-      transition: 'background 0.15s',
-    }}>
+    <div
+      onClick={onClick}
+      style={{
+        padding: '6px 8px', borderRadius: 6, fontSize: 13,
+        color: active ? 'var(--text-primary)' : 'var(--text-secondary)',
+        background: active ? 'var(--bg-secondary)' : 'transparent',
+        cursor: 'pointer',
+        transition: 'background 0.15s',
+      }}
+    >
       {label}
-    </div>
-  )
-}
-
-function MainContent() {
-  const [progress, setProgress] = useState<Progress | null>(null)
-
-  useEffect(() => {
-    fetch('/api/progress/overall')
-      .then(r => r.json())
-      .then(data => {
-        if (data.detail) return // auth error
-        setProgress(data)
-      })
-      .catch(() => {})
-  }, [])
-
-  return (
-    <div style={{
-      marginLeft: 260, padding: 40, minHeight: '100vh',
-    }}>
-      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>
-        Welcome to AI Atlas
-      </h1>
-      <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginBottom: 32 }}>
-        Your personal AI Engineering learning platform
-      </p>
-
-      {progress && (
-        <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: 16, marginBottom: 32,
-        }}>
-          <StatCard label="Book Progress" value={`${progress.book_percent}%`} />
-          <StatCard
-            label="Current Chapter"
-            value={progress.current_chapter_id || 'Not started'}
-          />
-          <StatCard label="Language" value={progress.current_language?.toUpperCase() || '—'} />
-        </div>
-      )}
     </div>
   )
 }
@@ -194,6 +208,7 @@ function StatCard({ label, value }: { label: string; value: string }) {
 
 export default function App() {
   const [authed, setAuthed] = useState(false)
+  const [view, setView] = useState('dashboard')
 
   useEffect(() => {
     fetch('/api/auth/check')
@@ -208,10 +223,9 @@ export default function App() {
     return <LoginScreen onLogin={() => setAuthed(true)} />
   }
 
-  return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg-primary)' }}>
-      <Sidebar />
-      <MainContent />
-    </div>
-  )
+  if (view === 'reader') {
+    return <Reader onNavigate={setView} />
+  }
+
+  return <Dashboard onNavigate={setView} />
 }
