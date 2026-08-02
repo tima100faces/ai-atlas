@@ -23,11 +23,16 @@ app = FastAPI(title="AI Atlas", version="0.1.0")
 # CORS for local frontend dev
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["http://localhost:5173", "http://localhost:3000", "https://idealabs.co"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve book assets (images)
+ASSETS_DIR = CONTENT_DIR / "book" / "assets"
+if ASSETS_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=str(ASSETS_DIR)), name="assets")
 
 # --- Auth ---
 def check_auth(request: Request):

@@ -384,3 +384,45 @@ A quantization technique might help achieve one or both of these goals. Quantiza
 On the other hand, training a model directly in lower precision can help with both goals. People attempted to train models in reduced precision as early as 2016; see Hubara et al. (2016) and Jacob et al. (2017). Character.AI (2024) shared that they were able to train their models entirely in INT8, which helped eliminate the training/serving precision mismatch while also significantly improving training efficiency. However, training in lower precision is harder to do, as backpropagation is more sensitive to lower precision.
 
 Lower-precision training is often done in mixed precision, where a copy of the weights is kept in higher precision but other values, such as gradients and activations, are kept in lower precision. You can also have less-sensitive weight values computed in lower precision and more-sensitive weight values computed in higher precision. For example, a common approach is to keep a master copy of weights in FP32, while using FP16 or BF16 for forward and backward passes, and then updating the FP32 master weights with the lower-precision gradients. This approach, known as mixed-precision training, has become standard practice in deep learning frameworks.
+
+## Figures
+
+![Figure](/assets/en/07-finetuning/p601_01.png)
+
+![Figure](/assets/en/07-finetuning/p611_01.png)
+
+![Figure](/assets/en/07-finetuning/p616_01.png)
+
+![Figure](/assets/en/07-finetuning/p622_01.png)
+
+![Figure](/assets/en/07-finetuning/p627_01.png)
+
+![Figure](/assets/en/07-finetuning/p629_01.png)
+
+![Figure](/assets/en/07-finetuning/p642_01.png)
+
+![Figure](/assets/en/07-finetuning/p643_01.png)
+
+![Figure](/assets/en/07-finetuning/p647_01.png)
+
+![Figure](/assets/en/07-finetuning/p648_01.png)
+
+![Figure](/assets/en/07-finetuning/p650_01.png)
+
+![Figure](/assets/en/07-finetuning/p658_01.png)
+
+![Figure](/assets/en/07-finetuning/p668_01.png)
+
+![Figure](/assets/en/07-finetuning/p669_01.png)
+
+![Figure](/assets/en/07-finetuning/p670_01.png)
+
+![Figure](/assets/en/07-finetuning/p673_01.png)
+
+![Figure](/assets/en/07-finetuning/p674_01.png)
+
+![Figure](/assets/en/07-finetuning/p677_01.png)
+
+![Figure](/assets/en/07-finetuning/p678_01.png)
+
+![Figure](/assets/en/07-finetuning/p679_01.png)

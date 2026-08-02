@@ -86,11 +86,11 @@ Many other languages, despite having a lot of speakers today, are severely under
 
 Given the dominance of English in the internet data, it's not surprising that general-purpose models work much better for English than other languages, according to multiple studies. For example, on the MMLU benchmark, a suite of 14,000 multiple-choice problems spanning 57 subjects, GPT-4 performed much better in English than under-represented languages like Telugu, as shown in Figure 2-1 (OpenAI, 2023).
 
-[Image: Figure 2-1. On the MMLU benchmark, GPT-4 performs better in English than in any other language. To obtain MMLU in other languages, OpenAI translated the questions using Azure AI Translator.]
+![Figure 2-1. On the MMLU benchmark, GPT-4 performs better in English than in any other language. To obtain MMLU in other languages, OpenAI translated the questions using Azure AI Translator.](/assets/en/02-understanding-foundation-models/p128_01.png)
 
 Similarly, when tested on six math problems on Project Euler, Yennie Jun found that GPT-4 was able to solve problems in English more than three times as often compared to Armenian or Farsi. GPT-4 failed in all six questions for Burmese and Amharic, as shown in Figure 2-2.
 
-[Image: Figure 2-2. GPT-4 is much better at math in English than in other languages.]
+![Figure 2-2. GPT-4 is much better at math in English than in other languages.](/assets/en/02-understanding-foundation-models/p129_01.png)
 
 Under-representation is a big reason for this underperformance. The three languages that have the worst performance on GPT-4's MMLU benchmarks—Telugu, Marathi, and Punjabi—are also among the languages that are most under-represented in Common Crawl. However, under-representation isn't the only reason. A language's structure and the culture it embodies can also make a language harder for a model to learn.
 
@@ -108,7 +108,7 @@ To address this, many models have been trained to focus on non-English languages
 
 General-purpose models like Gemini, GPTs, and Llamas can perform incredibly well on a wide range of domains, including but not limited to coding, law, science, business, sports, and environmental science. This is largely thanks to the inclusion of these domains in their training data. Figure 2-3 shows the distribution of domains present in Common Crawl according to the Washington Post's 2023 analysis.
 
-[Image: Figure 2-3. Distribution of domains in the C4 dataset. Reproduced from the statistics from the Washington Post. One caveat of this analysis is that it only shows the categories that are included, not the categories missing.]
+![Figure 2-3. Distribution of domains in the C4 dataset. Reproduced from the statistics from the Washington Post. One caveat of this analysis is that it only shows the categories that are included, not the categories missing.](/assets/en/02-understanding-foundation-models/p132_01.png)
 
 As of this writing, there haven't been many analyses of domain distribution in vision data. This might be because images are harder to categorize than texts. However, you can infer a model's domains from its benchmark performance. Table 2-3 shows how two models, CLIP and Open CLIP, perform on different benchmarks. These benchmarks show how well these two models do on birds, flowers, cars, and a few more categories, but the world is so much bigger and more complex than these few categories.
 
@@ -148,7 +148,7 @@ To understand the transformer, let's look at the problem it was created to solve
 
 At a high level, seq2seq contains an encoder that processes inputs and a decoder that generates outputs. Both inputs and outputs are sequences of tokens, hence the name. Seq2seq uses RNNs (recurrent neural networks) as its encoder and decoder. In its most basic form, the encoder processes the input tokens sequentially, outputting the final hidden state that represents the input. The decoder then generates output tokens sequentially, conditioned on both the final hidden state of the input and the previously generated token. A visualization of the seq2seq architecture is shown in the top half of Figure 2-4.
 
-[Image: Figure 2-4. Seq2seq architecture versus transformer architecture. For the transformer architecture, the arrows show the tokens that the decoder attends to when generating each output token.]
+![Figure 2-4. Seq2seq architecture versus transformer architecture. For the transformer architecture, the arrows show the tokens that the decoder attends to when generating each output token.](/assets/en/02-understanding-foundation-models/p137_01.png)
 
 There are two problems with seq2seq that Vaswani et al. (2017) addresses. First, the vanilla seq2seq decoder generates output tokens using only the final hidden state of the input. Intuitively, this is like generating answers about a book using the book summary. This limits the quality of the generated outputs. Second, the RNN encoder and decoder mean that both input processing and output generation are done sequentially, making it slow for long sequences. If an input is 200 tokens long, seq2seq has to wait for each input token to finish processing before moving on to the next.
 
@@ -179,7 +179,7 @@ At the heart of the transformer architecture is the attention mechanism. Underst
 
 The attention mechanism computes how much attention to give an input token by performing a dot product between the query vector and its key vector. A high score means that the model will use more of that page's content (its value vector) when generating the book's summary. A visualization of the attention mechanism with the key, value, and query vectors is shown in Figure 2-5. In this visualization, the query vector is seeking information from the previous tokens *How, are, you, ?, ¿* to generate the next token.
 
-[Image: Figure 2-5. An example of the attention mechanism in action next to its high-level visualization from the famous transformer paper, "Attention Is All You Need" (Vaswani et al., 2017).]
+![Figure 2-5. An example of the attention mechanism in action next to its high-level visualization from the famous transformer paper, "Attention Is All You Need" (Vaswani et al., 2017).](/assets/en/02-understanding-foundation-models/p141_01.png)
 
 Because each previous token has a corresponding key and value vector, the longer the sequence, the more key and value vectors need to be computed and stored. This is one reason why it's so hard to extend context length for transformer models. How to efficiently compute and store key and value vectors comes up again in Chapters 7 and 9.
 
@@ -220,7 +220,7 @@ Figure 2-6 visualizes a transformer model architecture. The size of a transforme
 - The dimension of the feedforward layer.
 - The vocabulary size.
 
-[Image: Figure 2-6. A visualization of the weight composition of a transformer model.]
+![Figure 2-6. A visualization of the weight composition of a transformer model.](/assets/en/02-understanding-foundation-models/p145_01.png)
 
 Larger dimension values result in larger model sizes. Table 2-4 shows these dimension values for different Llama 2 (Touvron et al., 2023) and Llama 3 (Dubey et al., 2024) models. Note that while the increased context length impacts the model's memory footprint, it doesn't impact the model's total number of parameters.
 
@@ -256,7 +256,7 @@ Figure 2-7 visualizes the transformer, Mamba, and Jamba blocks.
 
 While it's challenging to develop an architecture that outperforms the transformer, given its many limitations, there are a lot of incentives to do so. If another architecture does indeed overtake the transformer, some of the model adaptation techniques discussed in this book might change. However, just as the shift from ML engineering to AI engineering has kept many things unchanged, changing the underlying model architecture won't alter the fundamental approaches.
 
-[Image: Figure 2-7. A visualization of the transformer, Mamba, and Jamba layers. Image adapted from "Jamba: A Hybrid Transformer–Mamba Language Model" (Lieber et al., 2024).]
+![Figure 2-7. A visualization of the transformer, Mamba, and Jamba layers. Image adapted from "Jamba: A Hybrid Transformer–Mamba Language Model" (Lieber et al., 2024).](/assets/en/02-understanding-foundation-models/p150_01.png)
 
 ### Model Size
 
@@ -356,7 +356,7 @@ We've come a long way from when the training process was treated like alchemy. F
 
 This compute-optimal calculation assumes that the cost of acquiring data is much cheaper than the cost of compute. The same Chinchilla paper proposes another calculation for when the cost of training data is nontrivial.
 
-[Image: Figure 2-8. Graphs that depict the relationships between training loss, a model's number of parameters, FLOPs, and number of training tokens. Source: "Training Compute-Optimal Large Language Models" (DeepMind, 2022).]
+![Figure 2-8. Graphs that depict the relationships between training loss, a model's number of parameters, FLOPs, and number of training tokens. Source: "Training Compute-Optimal Large Language Models" (DeepMind, 2022).](/assets/en/02-understanding-foundation-models/p161_01.png)
 
 The scaling law was developed for dense models trained on predominantly human-generated data. Adapting this calculation for sparse models, such as mixture-of-expert models, and synthetic data is an active research area.
 
@@ -391,7 +391,7 @@ How many more orders of magnitude can model sizes grow? Would there be a point w
 
 Foundation models use so much data that there's a realistic concern we'll run out of internet data in the next few years. The rate of training dataset size growth is much faster than the rate of new data being generated (Villalobos et al., 2022), as illustrated in Figure 2-9. If you've ever put anything on the internet, you should assume that it already is or will be included in the training data for some language models, whether you consent or not. This is similar to how, if you post something on the internet, you should expect it to be indexed by Google.
 
-[Image: Figure 2-9. Projection of historical trend of training dataset sizes and available data stock. Source: Villalobos et al., 2024.]
+![Figure 2-9. Projection of historical trend of training dataset sizes and available data stock. Source: Villalobos et al., 2024.](/assets/en/02-understanding-foundation-models/p166_01.png)
 
 Some people are leveraging this fact to inject data they want into the training data of future models. They do this simply by publishing the text they want on the internet, hoping it will influence future models to generate the responses they desire. Bad actors can also leverage this approach for prompt injection attacks, as discussed in Chapter 5.
 
@@ -399,3 +399,39 @@ Some people are leveraging this fact to inject data they want into the training 
 > An open research question is how to make a model forget specific information it has learned during training. Imagine you published a blog post that you eventually deleted. If that blog post was included in a model's training data, the model might still reproduce the post's content. As a result, people could potentially access removed content without your consent.
 
 On top of that, the internet is being rapidly populated with data generated by AI models. If companies continue using internet data to train future models, these new models will be partially trained on AI-generated data.
+
+## Additional Figures
+
+![Figure](/assets/en/02-understanding-foundation-models/p171_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p172_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p174_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p184_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p189_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p190_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p194_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p195_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p198_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p204_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p209_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p212_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p214_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p217_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p221_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p222_01.png)
+
+![Figure](/assets/en/02-understanding-foundation-models/p224_01.png)

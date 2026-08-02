@@ -41,7 +41,7 @@ In the early days, a language model involved one language. However, today, a lan
 
 The basic unit of a language model is token. A token can be a character, a word, or a part of a word (like -tion), depending on the model. For example, GPT-4, a model behind ChatGPT, breaks the phrase "I can't wait to build AI applications" into nine tokens, as shown in Figure 1-1. Note that in this example, the word "can't" is broken into two tokens, can and 't. You can see how different OpenAI models tokenize text on the OpenAI website.
 
-[Image: Figure 1-1. An example of how GPT-4 tokenizes a phrase.]
+![Figure 1-1. An example of how GPT-4 tokenizes a phrase.](/assets/en/01-introduction/p038_01.png)
 
 The process of breaking the original text into tokens is called tokenization. For GPT-4, an average token is approximately ¾ the length of a word. So, 100 tokens are approximately 75 words.
 
@@ -71,7 +71,7 @@ An autoregressive language model is trained to predict the next token in a seque
 
 Figure 1-2 shows these two types of language models.
 
-[Image: Figure 1-2. Autoregressive language model and masked language model.]
+![Figure 1-2. Autoregressive language model and masked language model.](/assets/en/01-introduction/p046_01.png)
 
 **NOTE**
 
@@ -154,7 +154,7 @@ Foundation models mark a breakthrough from the traditional structure of AI resea
 
 A model that can work with more than one data modality is also called a multimodal model. A generative multimodal model is also called a large multimodal model (LMM). If a language model generates the next token conditioned on text-only tokens, a multimodal model generates the next token conditioned on both text and image tokens, or whichever modalities that the model supports, as shown in Figure 1-3.
 
-[Image: Figure 1-3. A multimodal model can generate the next token using information from both text and visual tokens.]
+![Figure 1-3. A multimodal model can generate the next token using information from both text and visual tokens.](/assets/en/01-introduction/p049_01.png)
 
 Just like language models, multimodal models need data to scale up. Self-supervision works for multimodal models too. For example, OpenAI used a variant of self-supervision called natural language supervision to train their language-image model CLIP (OpenAI, 2021). Instead of manually generating labels for each image, they found (image, text) pairs that co-occurred on the internet. They were able to generate a dataset of 400 million (image, text) pairs, which was 400 times larger than ImageNet, without manual labeling cost. This dataset enabled CLIP to become the first model that could generalize to multiple image classification tasks without requiring additional training.
 
@@ -170,7 +170,7 @@ Figure 1-4 shows the tasks used by the Super-NaturalInstructions benchmark to ev
 
 Imagine you're working with a retailer to build an application to generate product descriptions for their website. An out-of-the-box model might be able to generate accurate descriptions but might fail to capture the brand's voice or highlight the brand's messaging. The generated descriptions might even be full of marketing speech and cliches.
 
-[Image: Figure 1-4. The range of tasks in the Super-NaturalInstructions benchmark (Wang et al., 2022).]
+![Figure 1-4. The range of tasks in the Super-NaturalInstructions benchmark (Wang et al., 2022).](/assets/en/01-introduction/p053_01.png)
 
 There are multiple techniques you can use to get the model to generate what you want. For example, you can craft detailed instructions with examples of the desirable product descriptions. This approach is prompt engineering. You can connect the model to a database of customer reviews that the model can leverage to generate better descriptions. Using a database to supplement the instructions is called retrieval-augmented generation (RAG). You can also finetune—further train—the model on a dataset of high-quality product descriptions.
 
@@ -198,7 +198,7 @@ The success of ChatGPT prompted a sharp increase in investments in AI, both from
 
 Goldman Sachs Research estimated that AI investment could approach $100 billion in the US and $200 billion globally by 2025. AI is often mentioned as a competitive advantage. FactSet found that one in three S&P 500 companies mentioned AI in their earnings calls for the second quarter of 2023, three times more than did so the year earlier. Figure 1-5 shows the number of S&P 500 companies that mentioned AI in their earning calls from 2018 to 2023.
 
-[Image: Figure 1-5. The number of S&P 500 companies that mention AI in their earnings calls reached a record high in 2023. Data from FactSet.]
+![Figure 1-5. The number of S&P 500 companies that mention AI in their earnings calls reached a record high in 2023. Data from FactSet.](/assets/en/01-introduction/p055_01.png)
 
 According to WallStreetZen, companies that mentioned AI in their earning calls saw their stock price increase more than those that didn't: an average of a 4.6% increase compared to 2.4%. It's unclear whether it's causation (AI makes these companies more successful) or correlation (companies are successful because they are quick to adapt to new technologies).
 
@@ -214,7 +214,7 @@ The world is quick to embrace this opportunity. AI engineering has rapidly emerg
 
 A LinkedIn survey from August 2023 shows that the number of professionals adding terms like "Generative AI," "ChatGPT," "Prompt Engineering," and "Prompt Crafting" to their profile increased on average 75% each month. ComputerWorld declared that "teaching AI to behave is the fastest-growing career skill".
 
-[Image: Figure 1-6. Open source AI engineering tools are growing faster than any other software engineering tools, according to their GitHub star counts.]
+![Figure 1-6. Open source AI engineering tools are growing faster than any other software engineering tools, according to their GitHub star counts.](/assets/en/01-introduction/p063_01.png)
 
 #### WHY THE TERM "AI ENGINEERING?"
 
@@ -281,11 +281,11 @@ Because foundation models are general, applications built on top of them can sol
 
 Figure 1-7 shows the distribution of these use cases among the 205 open source applications. Note that the small percentage of education, data organization, and writing use cases doesn't mean that these use cases aren't popular. It just means that these applications aren't open source. Builders of these applications might find them more suitable for enterprise use cases.
 
-[Image: Figure 1-7. Distribution of use cases in the 205 open source repositories on GitHub.]
+![Figure 1-7. Distribution of use cases in the 205 open source repositories on GitHub.](/assets/en/01-introduction/p064_01.png)
 
 The enterprise world generally prefers applications with lower risks. For example, a 2024 a16z Growth report showed that companies are faster to deploy internal-facing applications (internal knowledge management) than external-facing applications (customer support chatbots), as shown in Figure 1-8. Internal applications help companies develop their AI engineering expertise while minimizing the risks associated with data privacy, compliance, and potential catastrophic failures. Similarly, while foundation models are open-ended and can be used for any task, many applications built on top of them are still close-ended, such as classification. Classification tasks are easier to evaluate, which makes their risks easier to estimate.
 
-[Image: Figure 1-8. Companies are more willing to deploy internal-facing applications]
+![Figure 1-8. Companies are more willing to deploy internal-facing applications](/assets/en/01-introduction/p067_01.png)
 
 Even after seeing hundreds of AI applications, I still find new applications that surprise me every week. In the early days of the internet, few people foresaw that the dominating use case on the internet one day would be social media. As we learn to make the most out of AI, the use case that will eventually dominate might surprise us. With luck, the surprise will be a good one.
 
@@ -311,7 +311,7 @@ At the other end are many software engineers who are convinced that they will ne
 
 Software engineering consists of many tasks. AI is better at some than others. McKinsey researchers found that AI can help developers be twice as productive for documentation, and 25–50% more productive for code generation and code refactoring. Minimal productivity improvement was observed for highly complex tasks, as shown in Figure 1-9. In my conversations with developers of AI coding tools, many told me that they've noticed that AI is much better at frontend development than backend development.
 
-[Image: Figure 1-9. AI can help developers be significantly more productive, especially for simple tasks, but this applies less for highly complex tasks. Data by McKinsey.]
+![Figure 1-9. AI can help developers be significantly more productive, especially for simple tasks, but this applies less for highly complex tasks. Data by McKinsey.](/assets/en/01-introduction/p072_01.png)
 
 Regardless of whether AI will replace software engineers, AI can certainly make them more productive. This means that companies can now accomplish more with fewer engineers. AI can also disrupt the outsourcing industry, as outsourced tasks tend to be simpler ones outside of a company's core business.
 
@@ -349,7 +349,7 @@ Instead of banning AI, schools could incorporate it to help students learn faste
 
 AI is especially helpful for language learning, as you can ask AI to roleplay different practice scenarios. Pajak and Bicknell (Duolingo, 2022) found that out of four stages of course creation, lesson personalization is the stage that can benefit the most from AI, as shown in Figure 1-10.
 
-[Image: Figure 1-10. AI can be used throughout all four stages of course creation at Duolingo, but it's the most helpful in the personalization stage. Image from Pajak and Bicknell (Duolingo, 2022).]
+![Figure 1-10. AI can be used throughout all four stages of course creation at Duolingo, but it's the most helpful in the personalization stage. Image from Pajak and Bicknell (Duolingo, 2022).](/assets/en/01-introduction/p089_01.png)
 
 AI can generate quizzes, both multiple-choice and open-ended, and evaluate the answers. AI can become a debate partner as it's much better at presenting different views on the same topic than the average human. For example, Khan Academy offers AI-powered teaching assistants to students and course assistants to teachers. An innovative teaching method I've seen is that teachers assign AI-generated essays for students to find and correct mistakes.
 
@@ -390,3 +390,15 @@ AI can help with exactly that. AI can automatically generate text descriptions a
 AI is very good with data analysis. It can write programs to generate data visualization, identify outliers, and make predictions like revenue forecasts.
 
 Enterprises can use
+
+## Additional Figures
+
+![Figure](/assets/en/01-introduction/p092_01.png)
+
+![Figure](/assets/en/01-introduction/p093_01.png)
+
+![Figure](/assets/en/01-introduction/p095_01.png)
+
+![Figure](/assets/en/01-introduction/p096_01.png)
+
+![Figure](/assets/en/01-introduction/p113_01.png)

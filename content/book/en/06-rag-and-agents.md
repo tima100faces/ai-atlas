@@ -21,7 +21,7 @@ RAG is a technique that enhances a model’s generation by retrieving the releva
 
 The retrieve-then-generate pattern was first introduced in "Reading Wikipedia to Answer Open-Domain Questions" (Chen et al., 2017). In this work, the system first retrieves five Wikipedia pages most relevant to a question, then a model uses, or reads, the information from these pages to generate an answer, as visualized in Figure 6-1.
 
-[Image: Figure 6-1. The retrieve-then-generate pattern. The model was referred to as the document reader.]
+![Figure 6-1. The retrieve-then-generate pattern. The model was referred to as the document reader.](/assets/en/06-rag-and-agents/p496_01.png)
 
 The term retrieval-augmented generation was coined in "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" (Lewis et al., 2020). The paper proposed RAG as a solution for knowledge-intensive tasks where all the available knowledge can’t be input into the model directly. With RAG, only the information most relevant to the query, as determined by the retriever, is retrieved and input into the model. Lewis et al. found that having access to relevant information can help the model generate more detailed responses while reducing hallucinations.
 
@@ -44,7 +44,7 @@ Efforts to expand context length are happening in parallel with efforts to make 
 
 A RAG system has two components: a retriever that retrieves information from external memory sources and a generator that generates a response based on the retrieved information. Figure 6-2 shows a high-level architecture of a RAG system.
 
-[Image: Figure 6-2. A basic RAG architecture.]
+![Figure 6-2. A basic RAG architecture.](/assets/en/06-rag-and-agents/p499_01.png)
 
 In the original RAG paper, Lewis et al. trained the retriever and the generative model together. In today's RAG systems, these two components are often trained separately, and many teams build their RAG systems using off-the-shelf retrievers and models. However, finetuning the whole RAG system end-to-end can improve its performance significantly.
 
@@ -129,7 +129,7 @@ With embedding-based retrieval, indexing has an extra function: converting the o
 1. **Embedding model**: convert the query into an embedding using the same embedding model used during indexing.
 2. **Retriever**: fetch k data chunks whose embeddings are closest to the query embedding, as determined by the retriever. The number of data chunks to fetch, k, depends on the use case, the generative model, and the query.
 
-[Image: Figure 6-3. A high-level view of how an embedding-based, or semantic, retriever works.]
+![Figure 6-3. A high-level view of how an embedding-based, or semantic, retriever works.](/assets/en/06-rag-and-agents/p508_01.png)
 
 The embedding-based retrieval workflow shown here is simplified. Real-world semantic retrieval systems might contain other components, such as a reranker to rerank all retrieved candidates, and caches to reduce latency.
 
@@ -296,7 +296,7 @@ The last question, "How about Emily Doe?", is ambiguous without context. If you 
 
 While I put query rewriting in "RAG", query rewriting isn't unique to RAG. In traditional search engines, query rewriting is often done using heuristics. In AI applications, query rewriting can also be done using other AI models, using a prompt similar to "Given the following conversation, rewrite the last user input to reflect what the user is actually asking". Figure 6-4 shows how ChatGPT rewrote the query using this prompt.
 
-[Image: Figure 6-4. You can use other generative models to rewrite queries.]
+![Figure 6-4. You can use other generative models to rewrite queries.](/assets/en/06-rag-and-agents/p525_01.png)
 
 Query rewriting can get complicated, especially if you need to do identity resolution or incorporate other knowledge. For example, if the user asks "How about his wife?" you will first need to query your database to find out who his wife is. If you don't have this information, the rewriting model should acknowledge that this query isn't solvable instead of hallucinating a name, leading to a wrong answer.
 
@@ -323,7 +323,7 @@ Please give a short succinct context to situate this chunk within the overall do
 
 The generated context for each chunk is prepended to each chunk, and the augmented chunk is then indexed by the retrieval algorithm. Figure 6-5 visualizes the process that Anthropic follows.
 
-[Image: Figure 6-5. Anthropic augments each chunk with a short context that situates this chunk within the original document, making it easier for the retriever to find the relevant chunks given a query. Image from "Introducing Contextual Retrieval" (Anthropic, 2024).]
+![Figure 6-5. Anthropic augments each chunk with a short context that situates this chunk within the original document, making it easier for the retriever to find the relevant chunks given a query. Image from "Introducing Contextual Retrieval" (Anthropic, 2024).](/assets/en/06-rag-and-agents/p529_01.png)
 
 #### EVALUATING RETRIEVAL SOLUTIONS
 
@@ -346,7 +346,7 @@ The last section discussed text-based RAG systems where the external data source
 
 If your generator is multimodal, its contexts might be augmented not only with text documents but also with images, videos, audio, etc., from external sources. I'll use images in the examples to keep the writing concise, but you can replace images with any other modality. Given a query, the retriever fetches both texts and images relevant to it. For example, given "What's the color of the house in the Pixar movie Up?" the retriever can fetch a picture of the house in Up to help the model answer, as shown in Figure 6-6.
 
-[Image: Figure 6-6. Multimodal RAG can augment a query with both text and images. (*The real image from Up is not used, for copyright reasons.)]
+![Figure 6-6. Multimodal RAG can augment a query with both text and images. (*The real image from Up is not used, for copyright reasons.)](/assets/en/06-rag-and-agents/p531_01.png)
 
 If the images have metadata—such as titles, tags, and captions—they can be retrieved using the metadata. For example, an image is retrieved if its caption is considered relevant to the query.
 
@@ -386,7 +386,7 @@ The workflow is as follows, visualized in Figure 6-7. To run this workflow, your
 2. **SQL execution**: execute the SQL query.
 3. **Generation**: generate a response based on the SQL result and the original user query.
 
-[Image: Figure 6-7. A RAG system that augments context with tabular data.]
+![Figure 6-7. A RAG system that augments context with tabular data.](/assets/en/06-rag-and-agents/p534_01.png)
 
 For the text-to-SQL step, if there are many available tables whose schemas can't all fit into the model context, you might need an intermediate step to predict what tables to use for each query. Text-to-SQL can be done by the same generator that generates the final response or a specialized text-to-SQL model.
 
@@ -419,8 +419,26 @@ There's a strong dependency between an agent's environment and its set of tools.
 
 Figure 6-8 shows a visualization of SWE-agent (Yang et al., 2024), an agent built on top of GPT-4. Its environment is the computer with the terminal and the file system. Its set of actions include navigate repo, search files, view files, and edit lines.
 
-[Image: Figure 6-8. SWE-agent (Yang et al., 2024) is a coding agent whose environment is the computer and whose actions include navigation, search, and editing. Adapted from an original image licensed under CC BY 4.0.]
+![Figure 6-8. SWE-agent (Yang et al., 2024) is a coding agent whose environment is the computer and whose actions include navigation, search, and editing. Adapted from an original image licensed under CC BY 4.0.](/assets/en/06-rag-and-agents/p538_01.png)
 
 An AI agent is meant to accomplish tasks typically provided by the users in the inputs. In an AI agent, AI is the brain that processes the information it receives, including the task and feedback from the environment, plans a sequence of actions to achieve this task, and determines whether the task has been accomplished.
 
 Let's get back to the RAG system with tabular data in the Kitty Vogue example. This is a simple agent with three actions: response generation, text-to-SQL, and SQL execution.
+
+## Additional Figures
+
+![Figure](/assets/en/06-rag-and-agents/p549_01.png)
+
+![Figure](/assets/en/06-rag-and-agents/p561_01.png)
+
+![Figure](/assets/en/06-rag-and-agents/p566_01.png)
+
+![Figure](/assets/en/06-rag-and-agents/p570_01.png)
+
+![Figure](/assets/en/06-rag-and-agents/p571_01.png)
+
+![Figure](/assets/en/06-rag-and-agents/p573_01.png)
+
+![Figure](/assets/en/06-rag-and-agents/p575_01.png)
+
+![Figure](/assets/en/06-rag-and-agents/p584_01.png)

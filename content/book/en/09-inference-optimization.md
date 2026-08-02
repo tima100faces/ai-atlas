@@ -415,3 +415,43 @@ The model keeps refining the generated tokens until they all pass verification a
 On the other hand, Medusa uses a tree-based attention mechanism to verify and integrate tokens. Each Medusa head produces several options for each position. These options are then organized into a tree-like structure to select the most promising combination. The process is visualized in Figure 9-11.
 
 ![Figure 9-11. In Medusa (Cai et al., 2024), multiple decoding heads generate several options for each position, which are then organized into a tree structure to select the most promising combination.](images/fig9-11.png)
+
+## Figures
+
+![Figure](/assets/en/09-inference-optimization/p776_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p779_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p781_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p791_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p796_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p800_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p805_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p808_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p813_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p817_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p820_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p821_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p827_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p832_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p835_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p836_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p839_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p843_01.png)
+
+![Figure](/assets/en/09-inference-optimization/p844_01.png)

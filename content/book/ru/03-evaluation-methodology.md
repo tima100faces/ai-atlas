@@ -363,3 +363,19 @@ $$\text{cosine\_similarity}(A, B) = \frac{A \cdot B}{||A|| \cdot ||B||}.$$
 Поскольку компьютеры работают с числами, модель должна преобразовывать входные данные в численные представления, которые способны обрабатывать компьютеры. Эмбеддинг — это численное представление, цель которого — передать смысл исходных данных.
 
 Эмбеддинг — это вектор. Например, предложение «Кошка сидит на коврике» можно представить с помощью вектора эмбеддинга.
+
+## Иллюстрации
+
+![Рисунок](/assets/ru/03-evaluation-methodology/p149_02.png)
+
+![Рисунок](/assets/ru/03-evaluation-methodology/p150_02.png)
+
+![Рисунок](/assets/ru/03-evaluation-methodology/p158_03.png)
+
+![Рисунок](/assets/ru/03-evaluation-methodology/p166_02.png)
+
+![Рисунок](/assets/ru/03-evaluation-methodology/p167_01.png)
+
+![Рисунок](/assets/ru/03-evaluation-methodology/p170_02.png)
+
+![Рисунок](/assets/ru/03-evaluation-methodology/p184_01.png)

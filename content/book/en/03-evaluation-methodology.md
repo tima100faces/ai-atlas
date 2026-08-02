@@ -409,3 +409,25 @@ The better answer is:"
 ```
 
 A general-purpose AI judge can be asked to evaluate a response based on any criteria. If you're building a roleplaying chatbot, you might want to evaluate if a chatbot's response is consistent with the role users want it to play,
+
+## Figures
+
+![Figure](/assets/en/03-evaluation-methodology/p237_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p238_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p240_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p243_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p264_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p270_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p274_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p281_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p295_01.png)
+
+![Figure](/assets/en/03-evaluation-methodology/p297_01.png)

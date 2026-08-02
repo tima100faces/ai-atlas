@@ -504,3 +504,45 @@ Generate a menu item that could be found at a {{theme}} themed restaurant.
 ```
 
 Если файлы запросов являются частью вашего git-репозитория, их можно версионировать с помощью git. Недостаток такого подхода заключается в том, что если несколько приложений совместно используют один и тот же запрос, а он обновится, то все зависящие от него приложения будут автоматически обновлены в соответствии с новым запросом. Другими словами, если вы версионируете запросы вместе с кодом, изменение запроса повлияет на все приложения, которые его используют.
+
+## Иллюстрации
+
+![Рисунок](/assets/ru/05-prompt-engineering/p259_02.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p260_02.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p260_03.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p260_04.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_01.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_02.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_03.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_05.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_06.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_07.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_08.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_09.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_10.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_11.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p269_12.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p272_02.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p273_01.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p287_01.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p288_02.png)
+
+![Рисунок](/assets/ru/05-prompt-engineering/p289_02.png)

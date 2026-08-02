@@ -395,3 +395,25 @@ To signal whether the data is also open, the term "open weight" is used for mode
 As of this writing, the vast majority of open source models are open weight only. Model developers might hide training data information on purpose, as this information can open model developers to public scrutiny and potential lawsuits.
 
 Another important attribute of open source models is their licenses. Before foundation models,
+
+## Figures
+
+![Figure](/assets/en/04-evaluate-ai-systems/p332_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p336_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p338_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p348_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p358_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p362_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p368_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p372_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p386_01.png)
+
+![Figure](/assets/en/04-evaluate-ai-systems/p392_01.png)

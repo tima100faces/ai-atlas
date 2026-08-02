@@ -153,7 +153,7 @@ This brings up a question: How do we decide on the right data mix? A simple appr
 
 To evaluate the impact of data diversity and quality, Zhou et al. (2023) carried out an interesting experiment where they trained a 7B-parameter language model on three datasets of the same size—2,000 examples—but with different characteristics. The first is high-quality but not diverse. The second is diverse but low-quality. The third is both diverse and high-quality. Figure 8-1 shows the generation quality of the three resulting models.
 
-[Image: Figure 8-1. A 7B-parameter model, finetuned on a dataset that is both high-quality and diverse, outperforms that same model finetuned on a dataset that is either diverse or high-quality. Image from Zhou et al. (2023). The image is licensed under CC BY 4.0.]
+![Figure 8-1. A 7B-parameter model, finetuned on a dataset that is both high-quality and diverse, outperforms that same model finetuned on a dataset that is either diverse or high-quality. Image from Zhou et al. (2023). The image is licensed under CC BY 4.0.](/assets/en/08-dataset-engineering/p712_01.png)
 
 ### Data Quantity
 
@@ -180,7 +180,7 @@ The closer the base model is to the desirable performance, the fewer examples ar
 
 OpenAI’s finetuning guide shows that if you have fewer examples (100), more advanced models give you better finetuning performance. This is likely because the more advanced models already perform better out of the box. However, after finetuning on a lot of examples (550,000), all five models in the experiment performed similarly, as illustrated in Figure 8-2.
 
-[Image: Figure 8-2. With 100 examples, more advanced models give much better performance after finetuning. With 550,000 examples, all models give similar performance after finetuning. Experiments done by Stanford Natural Language Inference (SNLI) Corpus.]
+![Figure 8-2. With 100 examples, more advanced models give much better performance after finetuning. With 550,000 examples, all models give similar performance after finetuning. Experiments done by Stanford Natural Language Inference (SNLI) Corpus.](/assets/en/08-dataset-engineering/p715_01.png)
 
 In short, if you have a small amount of data, you might want to use PEFT methods on more advanced models. If you have a large amount of data, use full finetuning with smaller models.
 
@@ -196,7 +196,7 @@ However, be careful before concluding that finetuning with a small dataset doesn
 
 Experimenting with a small dataset can help you estimate how much more data you’ll need. You can finetune a model on subsets of your current dataset—e.g., 25%, 50%, 100%—and plot how performance scales with dataset size. A steep performance gain slope with increasing dataset size means that you can expect significant performance improvement by doubling your data. A plateau slope means that doubling your data will give only a small improvement. Figure 8-3 shows an example of this plot.
 
-[Image: Figure 8-3. The performance gain curve with different dataset sizes can help you estimate the impact of additional training examples on your model’s performance.]
+![Figure 8-3. The performance gain curve with different dataset sizes can help you estimate the impact of additional training examples on your model’s performance.](/assets/en/08-dataset-engineering/p718_01.png)
 
 The performance gain curve shown in Figure 8-3 is fairly typical. In most cases, additional training examples yield diminishing returns: the same number of examples typically gives a lower performance boost as the dataset grows. For example, the first 1,000 examples might improve a model’s accuracy by ten percentage points, but the next 1,000 examples might only improve it by five.
 
@@ -204,7 +204,7 @@ While a larger number of finetuning examples generally improves a model’s perf
 
 The diversity of data can be reflected in task types (such as summarization and question answering), topic diversity (such as fashion, finance, and technology), and the expected output formats (such as JSON outputs or yes-or-no answers).
 
-[Image: Figure 8-4. Diversity in finetuning number, measured by the number of tasks, can impact model performance. Image from "Scaling Instruction-Finetuned Language Models" (Chung et al., 2022). The image is licensed under CC BY 4.0.]
+![Figure 8-4. Diversity in finetuning number, measured by the number of tasks, can impact model performance. Image from "Scaling Instruction-Finetuned Language Models" (Chung et al., 2022). The image is licensed under CC BY 4.0.](/assets/en/08-dataset-engineering/p720_01.png)
 
 How much data to use for finetuning is determined not just by what you need but also by what you can afford. If you budget $10,000 for data annotation and each example costs $2 to annotate, you can have at most 5,000 examples. You might also need to balance the budget for data and compute. Spending more money on data leaves you less money for compute, and vice versa.
 
@@ -362,3 +362,11 @@ Simulations are common to generate data to teach models to use tools. As mention
 Simulations are particularly valuable for generating data for rare events. For example, in finance, researchers can simulate scenarios such as a company successfully going public or a significant bankruptcy to understand their market impacts. Manufacturers can simulate defects in materials or assemblies to generate data to train anomaly detection and quality control models. Similarly, by simulating the Earth’s systems, climate scientists can create variations in temperature changes, precipitation patterns, and extreme weather scenarios. This synthetic data is then fed into AI models, enabling them to learn from a broader spectrum of possible futures.
 
 Both rule-based and simulation-based techniques have been useful for many use cases, but they have limitations. Rule-based techniques are limited by the complexity of the rules you can define. Simulations are limited by how accurately you can model the real world. AI-powered data synthesis, discussed next, promises to overcome some of these limitations.
+
+## Additional Figures
+
+![Figure](/assets/en/08-dataset-engineering/p743_01.png)
+
+![Figure](/assets/en/08-dataset-engineering/p757_01.png)
+
+![Figure](/assets/en/08-dataset-engineering/p757_02.png)

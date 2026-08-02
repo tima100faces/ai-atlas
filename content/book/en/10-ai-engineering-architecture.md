@@ -444,3 +444,47 @@ User feedback, extracted from conversations, can be used for evaluation, develop
 - **Personalization**: personalize the application to each user
 
 Implicit conversational feedback can be inferred from both the content of user messages and their patterns of communication. Because feedback is blended into daily conversations, it's also challenging to extract.
+
+## Figures
+
+![Figure](/assets/en/10-ai-engineering-architecture/p853_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p856_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p858_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p863_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p866_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p867_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p870_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p875_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p876_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p877_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p888_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p899_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p905_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p910_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p911_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p912_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p913_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p916_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p917_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p919_01.png)
+
+![Figure](/assets/en/10-ai-engineering-architecture/p920_01.png)

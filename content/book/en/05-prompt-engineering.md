@@ -29,7 +29,7 @@ A prompt generally consists of one or more of the following parts:
 
 Figure 5-1 shows a very simple prompt that one might use for an NER (named-entity recognition) task.
 
-[Image: Figure 5-1. A simple prompt for NER.]
+![Figure 5-1. A simple prompt for NER.](/assets/en/05-prompt-engineering/p418_01.png)
 
 For prompting to work, the model has to be able to follow instructions. If a model is bad at it, it doesn't matter how good your prompt is, the model won't be able to follow it. How to evaluate a model's instruction-following capability is discussed in Chapter 4.
 
@@ -129,15 +129,15 @@ How much information can be included in a prompt depends on the model's context 
 
 Context length expansion soon became a race among model providers and practitioners. Figure 5-2 shows how quickly the context length limit is expanding. Within five years, it grew 2,000 times from GPT-2's 1K context length to Gemini-1.5 Pro's 2M context length. A 100K context length can fit a moderate-sized book. As a reference, this book contains approximately 120,000 words, or 160,000 tokens. A 2M context length can fit approximately 2,000 Wikipedia pages and a reasonably complex codebase such as PyTorch.
 
-[Image: Figure 5-2. Context length was expanded from 1K to 2M between February 2019 and May 2024.]
+![Figure 5-2. Context length was expanded from 1K to 2M between February 2019 and May 2024.](/assets/en/05-prompt-engineering/p429_01.png)
 
 Not all parts of a prompt are equal. Research has shown that a model is much better at understanding instructions given at the beginning and the end of a prompt than in the middle (Liu et al., 2023). One way to evaluate the effectiveness of different parts of a prompt is to use a test commonly known as the **needle in a haystack (NIAH)**. The idea is to insert a random piece of information (the needle) in different locations in a prompt (the haystack) and ask the model to find it. Figure 5-3 shows an example of a piece of information used in Liu et al.'s paper.
 
-[Image: Figure 5-3. An example of a needle in a haystack prompt used by Liu et al., 2023]
+![Figure 5-3. An example of a needle in a haystack prompt used by Liu et al., 2023](/assets/en/05-prompt-engineering/p430_01.png)
 
 Figure 5-4 shows the result from the paper. All the models tested seemed much better at finding the information when it's closer to the beginning and the end of the prompt than the middle.
 
-[Image: Figure 5-4. The effect of changing the position of the inserted information in the prompt on models' performance. Lower positions are closer to the start of the input context.]
+![Figure 5-4. The effect of changing the position of the inserted information in the prompt on models' performance. Lower positions are closer to the start of the input context.](/assets/en/05-prompt-engineering/p430_02.png)
 
 The paper used a randomly generated string, but you can also use real questions and real answers. For example, if you have the transcript of a long doctor visit, you can ask the model to return information mentioned throughout the meeting, such as the drug the patient is using or the blood type of the patient. Make sure that the information you use to test is private to avoid the possibility of it being included in the model's training data. If that's the case, a model might just rely on its internal knowledge, instead of the context, to answer the question.
 
@@ -167,7 +167,7 @@ As you experiment with a prompt, you might observe undesirable behaviors that re
 
 A persona can help the model to understand the perspective it's supposed to use to generate responses. Given the essay "I like chickens. Chickens are fluffy and they give tasty eggs.", a model out of the box might give it a score of 2 out of 5. However, if you ask the model to adopt the persona of a first-grade teacher, the essay might get a 4. See Figure 5-5.
 
-[Image: Figure 5-5. Asking a model to adopt a persona can help the model use the right perspective to answer your queries.]
+![Figure 5-5. Asking a model to adopt a persona can help the model use the right perspective to answer your queries.](/assets/en/05-prompt-engineering/p433_01.png)
 
 **Provide examples**
 
@@ -283,7 +283,7 @@ You can encourage the model to spend more time to, for a lack of better words, "
 
 CoT means explicitly asking the model to think step by step, nudging it toward a more systematic approach to problem solving. CoT is among the first prompting techniques that work well across models. It was introduced in "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models" (Wei et al., 2022), almost a year before ChatGPT came out. Figure 5-6 shows how CoT improved the performance of models of different sizes (LaMDA, GPT-3, and PaLM) on different benchmarks. LinkedIn found that CoT also reduces models' hallucinations.
 
-[Image: Figure 5-6. CoT improved the performance of LaMDA, GPT-3, and PaLM on MAWPS (Math Word Problem Solving), SVAMP (sequence variation analysis, maps, and phylogeny), and GSM-8K benchmarks. Screenshot from Wei et al., 2022. This image is licensed under CC BY 4.0.]
+![Figure 5-6. CoT improved the performance of LaMDA, GPT-3, and PaLM on MAWPS (Math Word Problem Solving), SVAMP (sequence variation analysis, maps, and phylogeny), and GSM-8K benchmarks. Screenshot from Wei et al., 2022. This image is licensed under CC BY 4.0.](/assets/en/05-prompt-engineering/p449_01.png)
 
 The simplest way to do CoT is to add "think step by step" or "explain your decision" in your prompt. The model then works out what steps to take. Alternatively, you can specify the steps the model should take or include examples of what the steps should look like in your prompt. Table 5-4 shows four CoT response variations to the same original prompt. Which variation works best depends on the application.
 
@@ -316,11 +316,11 @@ Tools that aim to automate the whole prompt engineering workflow include OpenPro
 
 A common approach to automating prompt generation is to use AI models. AI models themselves are capable of writing prompts. In its simplest form, you can ask a model to generate a prompt for your application, such as "Help me write a concise prompt for an application that grades college essays between 1 and 5". You can also ask AI models to critique and improve your prompts or generate in-context examples. Figure 5-7 shows a prompt written by Claude 3.5 Sonnet (Anthropic, 2024).
 
-[Image: Figure 5-7. AI models can write prompts for you, as shown by this prompt generated by Claude 3.5 Sonnet.]
+![Figure 5-7. AI models can write prompts for you, as shown by this prompt generated by Claude 3.5 Sonnet.](/assets/en/05-prompt-engineering/p455_01.png)
 
 DeepMind's Promptbreeder (Fernando et al., 2023) and Stanford's TextGrad (Yuksekgonul et al., 2024) are two examples of AI-powered prompt optimization tools. Promptbreeder leverages evolutionary strategy to selectively "breed" prompts. It starts with an initial prompt and uses an AI model to generate mutations to this prompt. The prompt mutation process is guided by a set of mutator prompts. It then generates mutations for the most promising mutation, and so on, until it finds a prompt that satisfies your criteria. Figure 5-8 shows how Promptbreeder works at a high level.
 
-[Image: Figure 5-8. Starting from an initial prompt, Promptbreeder generates mutations to this prompt and selects the most promising ones. The selected ones are again mutated, and so on.]
+![Figure 5-8. Starting from an initial prompt, Promptbreeder generates mutations to this prompt and selects the most promising ones. The selected ones are again mutated, and so on.](/assets/en/05-prompt-engineering/p456_01.png)
 
 Many tools aim to assist parts of prompt engineering. For example, Guidance, Outlines, and Instructor guide models toward structured outputs. Some tools perturb your prompts, such as replacing a word with its synonym or rewriting a prompt, to see which prompt variation works best.
 
@@ -332,7 +332,7 @@ Often, multiple API calls are required per prompt: one to generate a response, o
 
 Second, tool developers can make mistakes. A tool developer might get the wrong template for a given model, construct a prompt by concatenating tokens instead of raw texts, or have a typo in its prompt templates. Figure 5-9 shows typos in a LangChain default critique prompt.
 
-[Image: Figure 5-9. Typos in a LangChain default prompt are highlighted.]
+![Figure 5-9. Typos in a LangChain default prompt are highlighted.](/assets/en/05-prompt-engineering/p457_01.png)
 
 On top of that, any prompt engineering tool can change without warning. They might switch to different prompt templates or rewrite their default prompts. The more tools you use, the more complex your system becomes, increasing the potential for errors.
 
@@ -452,7 +452,7 @@ Popular applications like ChatGPT are particularly attractive targets for revers
 
 Not only system prompts but also context can be extracted. Private information included in the context can also be revealed to users, as demonstrated in Figure 5-10.
 
-[Image: Figure 5-10. A model can reveal a user's location even if it's been explicitly instructed not to do so. Image from Brex's Prompt Engineering Guide (2023).]
+![Figure 5-10. A model can reveal a user's location even if it's been explicitly instructed not to do so. Image from Brex's Prompt Engineering Guide (2023).](/assets/en/05-prompt-engineering/p467_01.png)
 
 While well-crafted prompts are valuable, proprietary prompts are more of a liability than a competitive advantage. Prompts require maintenance. They need to be updated every time the underlying model changes.
 
@@ -474,3 +474,17 @@ Prompt attacks are possible precisely because models are trained to follow instr
 AI safety, like any area of cybersecurity, is an evolving cat-and-mouse game where developers continuously work to neutralize known threats while attackers devise new ones. Here are a few common approaches that have succeeded in the past, presented in the order of increasing sophistication. Most of them are no longer effective for most models.
 
 [... content truncated ...]
+
+## Additional Figures
+
+![Figure](/assets/en/05-prompt-engineering/p473_01.png)
+
+![Figure](/assets/en/05-prompt-engineering/p474_01.png)
+
+![Figure](/assets/en/05-prompt-engineering/p479_01.png)
+
+![Figure](/assets/en/05-prompt-engineering/p480_01.png)
+
+![Figure](/assets/en/05-prompt-engineering/p482_01.png)
+
+![Figure](/assets/en/05-prompt-engineering/p485_01.png)
