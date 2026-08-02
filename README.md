@@ -79,4 +79,6 @@ Password: `timohin2026`
 
 ## Status
 
-:hammer_and_wrench: Under active development (Phase 0)
+🚀 **Phase 1.5 complete** — All 22 chapters (EN + RU) parsed and LLM-cleaned. Reader UI functional with language switching and progress tracking.
+
+**Next:** Phase 2 — Dashboard & Progress System
