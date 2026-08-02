@@ -25,12 +25,14 @@ type Language = 'en' | 'ru'
 
 interface ReaderProps {
   onNavigate: (view: string) => void
+  initialChapterId?: string
+  initialLanguage?: string
 }
 
-export default function Reader({ onNavigate }: ReaderProps) {
+export default function Reader({ onNavigate, initialChapterId, initialLanguage }: ReaderProps) {
   const [meta, setMeta] = useState<Meta | null>(null)
   const [progress, setProgress] = useState<Record<string, ChapterProgress>>({})
-  const [language, setLanguage] = useState<Language>('ru')
+  const [language, setLanguage] = useState<Language>((initialLanguage as Language) || 'ru')
   const [activeChapter, setActiveChapter] = useState<Chapter | null>(null)
   const [content, setContent] = useState<string>('')
   const [note, setNote] = useState('')
@@ -44,16 +46,24 @@ export default function Reader({ onNavigate }: ReaderProps) {
       .then(data => {
         if (data.chapters) {
           setMeta(data)
-          // Start with chapter from progress or first chapter
-          const savedChapterId = data.current_chapter_id
-          const firstChapter = savedChapterId
-            ? data.chapters.find((c: Chapter) => c.id === savedChapterId)
-            : data.chapters[0]
-          if (firstChapter) setActiveChapter(firstChapter)
+          // Priority: initialChapterId > saved in meta > first chapter
+          let targetChapter: Chapter | undefined
+          if (initialChapterId) {
+            targetChapter = data.chapters.find((c: Chapter) => c.id === initialChapterId)
+          }
+          if (!targetChapter && data.current_chapter_id) {
+            targetChapter = data.chapters.find((c: Chapter) => c.id === data.current_chapter_id)
+          }
+          if (!targetChapter) {
+            targetChapter = data.chapters[0]
+          }
+          if (targetChapter) {
+            setActiveChapter(targetChapter)
+          }
         }
       })
       .catch(() => {})
-  }, [])
+  }, [initialChapterId])
 
   // Load progress
   useEffect(() => {
