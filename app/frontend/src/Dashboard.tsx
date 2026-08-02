@@ -151,7 +151,7 @@ export default function Dashboard({ onNavigate }: DashboardProps) {
         </SidebarSection>
 
         <SidebarSection title="Courses">
-          <SidebarItem label="Anthropic" />
+          <SidebarItem label="Anthropic" onClick={() => onNavigate('courses')} />
         </SidebarSection>
 
         <SidebarSection title="Notes">

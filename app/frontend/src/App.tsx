@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Dashboard from './Dashboard'
 import Reader from './Reader'
+import Courses from './Courses'
 
 export default function App() {
   const [authed, setAuthed] = useState(false)
@@ -26,6 +27,17 @@ export default function App() {
         onNavigate={(v) => { setView(v); setReaderParams({}) }}
         initialChapterId={readerParams.chapterId}
         initialLanguage={readerParams.language}
+      />
+    )
+  }
+
+  if (view === 'courses') {
+    return (
+      <Courses
+        onNavigate={(v, params) => {
+          setView(v)
+          setReaderParams(params || {})
+        }}
       />
     )
   }
