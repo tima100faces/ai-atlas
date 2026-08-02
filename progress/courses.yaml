@@ -1,0 +1,42 @@
+updated_at: "2026-08-02T10:30:00+03:00"
+
+courses:
+  - id: "mcp-intro"
+    title: "Introduction to Model Context Protocol"
+    url: "https://anthropic.skilljar.com/introduction-to-model-context-protocol"
+    status: "todo"
+    priority: 1
+    notes: ""
+    takeaways: []
+
+  - id: "mcp-advanced"
+    title: "Model Context Protocol: Advanced Topics"
+    url: "https://anthropic.skilljar.com/model-context-protocol-advanced-topics"
+    status: "todo"
+    priority: 2
+    notes: ""
+    takeaways: []
+
+  - id: "claude-code-101"
+    title: "Claude Code 101"
+    url: "https://anthropic.skilljar.com/claude-code-101"
+    status: "todo"
+    priority: 3
+    notes: ""
+    takeaways: []
+
+  - id: "subagents"
+    title: "Introduction to subagents"
+    url: "https://anthropic.skilljar.com/introduction-to-subagents"
+    status: "todo"
+    priority: 4
+    notes: ""
+    takeaways: []
+
+  - id: "agent-skills"
+    title: "Introduction to agent skills"
+    url: "https://anthropic.skilljar.com/introduction-to-agent-skills"
+    status: "todo"
+    priority: 5
+    notes: ""
+    takeaways: []

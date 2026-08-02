@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+
+# Original large PDFs (keep them only on server, not in git if too big)
+# content/book/original/*.pdf
+
+# Temporary parsing outputs
+content/book/raw/
+*.tmp
+
+# OS
+Thumbs.db
