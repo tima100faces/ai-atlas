@@ -184,6 +184,8 @@ def gemini_model(input_data, model_name, max_tokens):
     return {"response": response["choices"][0]["message"]["content"]}
 
 @app.route('/model', methods=['POST'])
+
+![Рисунок (стр. 559)](/assets/ru/10-ai-engineering-architecture/p559_09.png)
 def model_gateway():
     data = request.get_json()
     model_type = data.get("model_type")
@@ -371,7 +373,3 @@ def model_gateway():
 
 [^4]: На момент написания книги совокупная рыночная капитализация нескольких крупнейших компаний, занимающихся наблюдаемостью (Datadog, Splunk, Dynatrace, New Relic), приближалась к 100 млрд долларов.
 [^5]: В моей книге «Проектирование систем машинного обучения» тоже есть глава, посвященная мониторингу. Ее черновик доступен в моем блоге Data Distribution Shifts and Monitoring (https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html).
-
-## Дополнительные иллюстрации
-
-![Рисунок](/assets/ru/10-ai-engineering-architecture/p559_09.png)

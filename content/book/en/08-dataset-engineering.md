@@ -184,6 +184,12 @@ OpenAI’s finetuning guide shows that if you have fewer examples (100), more ad
 
 In short, if you have a small amount of data, you might want to use PEFT methods on more advanced models. If you have a large amount of data, use full finetuning with smaller models.
 
+
+![Figure (page 757)](/assets/en/08-dataset-engineering/p757_02.png)
+
+![Figure (page 757)](/assets/en/08-dataset-engineering/p757_01.png)
+
+![Figure (page 743)](/assets/en/08-dataset-engineering/p743_01.png)
 Before investing in curating a large dataset, you might want to start with a small, well-crafted dataset (e.g., 50 examples) to see if finetuning can improve the model. If this small dataset is sufficient to achieve your desirable performance, that’s great. Clear improvements suggest that more data will improve the performance even more. If no improvement is observed with small data, a bigger dataset will rarely do the trick.
 
 However, be careful before concluding that finetuning with a small dataset doesn’t improve a model. Many things, other than data, can impact finetuning’s results, such as the choice of hyperparameters (e.g., the learning rate is too high or too low), data quality, poorly crafted prompts, etc. In the vast majority of cases, you should see improvements after finetuning with 50–100 examples.
@@ -362,11 +368,3 @@ Simulations are common to generate data to teach models to use tools. As mention
 Simulations are particularly valuable for generating data for rare events. For example, in finance, researchers can simulate scenarios such as a company successfully going public or a significant bankruptcy to understand their market impacts. Manufacturers can simulate defects in materials or assemblies to generate data to train anomaly detection and quality control models. Similarly, by simulating the Earth’s systems, climate scientists can create variations in temperature changes, precipitation patterns, and extreme weather scenarios. This synthetic data is then fed into AI models, enabling them to learn from a broader spectrum of possible futures.
 
 Both rule-based and simulation-based techniques have been useful for many use cases, but they have limitations. Rule-based techniques are limited by the complexity of the rules you can define. Simulations are limited by how accurately you can model the real world. AI-powered data synthesis, discussed next, promises to overcome some of these limitations.
-
-## Additional Figures
-
-![Figure](/assets/en/08-dataset-engineering/p743_01.png)
-
-![Figure](/assets/en/08-dataset-engineering/p757_01.png)
-
-![Figure](/assets/en/08-dataset-engineering/p757_02.png)

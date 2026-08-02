@@ -215,6 +215,26 @@ def check(candidate):
     assert candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) == False
 ```
 
+
+![Figure (page 297)](/assets/en/03-evaluation-methodology/p297_01.png)
+
+![Figure (page 295)](/assets/en/03-evaluation-methodology/p295_01.png)
+
+![Figure (page 281)](/assets/en/03-evaluation-methodology/p281_01.png)
+
+![Figure (page 274)](/assets/en/03-evaluation-methodology/p274_01.png)
+
+![Figure (page 270)](/assets/en/03-evaluation-methodology/p270_01.png)
+
+![Figure (page 264)](/assets/en/03-evaluation-methodology/p264_01.png)
+
+![Figure (page 243)](/assets/en/03-evaluation-methodology/p243_01.png)
+
+![Figure (page 240)](/assets/en/03-evaluation-methodology/p240_01.png)
+
+![Figure (page 238)](/assets/en/03-evaluation-methodology/p238_01.png)
+
+![Figure (page 237)](/assets/en/03-evaluation-methodology/p237_01.png)
 When evaluating a model, for each problem a number of code samples, denoted as k, are generated. A model solves a problem if any of the k code samples it generated pass all of that problem's test cases. The final score, called pass@k, is the fraction of the solved problems out of all problems. If there are 10 problems and a model solves 5 with k = 3, then that model's pass@3 score is 50%. The more code samples a model generates, the more chance the model has at solving each problem, hence the greater the final score. This means that in expectation, pass@1 score should be lower than pass@3, which, in turn, should be lower than pass@10.
 
 Another category of tasks whose functional correctness can be automatically evaluated is game bots. If you create a bot to play Tetris, you can tell how good the bot is by the score it gets. Tasks with measurable objectives can typically be evaluated using functional correctness. For example, if you ask AI to schedule your workloads to optimize energy consumption, the AI's performance can be measured by how much energy it saves.
@@ -409,25 +429,3 @@ The better answer is:"
 ```
 
 A general-purpose AI judge can be asked to evaluate a response based on any criteria. If you're building a roleplaying chatbot, you might want to evaluate if a chatbot's response is consistent with the role users want it to play,
-
-## Figures
-
-![Figure](/assets/en/03-evaluation-methodology/p237_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p238_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p240_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p243_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p264_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p270_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p274_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p281_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p295_01.png)
-
-![Figure](/assets/en/03-evaluation-methodology/p297_01.png)

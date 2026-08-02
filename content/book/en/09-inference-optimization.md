@@ -33,7 +33,7 @@ This section starts with an overview of inference that introduces a shared vocab
 
 In production, the component that runs model inference is called an inference server. It hosts the available models and has access to the necessary hardware. Based on requests from applications (e.g., user prompts), it allocates resources to execute the appropriate models and returns the responses to users. An inference server is part of a broader inference service, which is also responsible for receiving, routing, and possibly preprocessing requests before they reach the inference server. A visualization of a simple inference service is shown in Figure 9-1.
 
-![Figure 9-1. A simple inference service.](images/fig9-1.png)
+![Figure 9-1. A simple inference service.](/assets/en/09-inference-optimization/p776_01.png)
 
 Model APIs like those provided by OpenAI and Google are inference services. If you use one of these services, you won’t be implementing most of the techniques discussed in this chapter. However, if you host a model yourself, you’ll be responsible for building, optimizing, and maintaining its inference service.
 
@@ -55,7 +55,7 @@ The concepts of compute-bound or memory bandwidth-bound were introduced in the p
 
 Different optimization techniques aim to mitigate different bottlenecks. For example, a compute-bound workload might be sped up by spreading it out to more chips or by leveraging chips with more computational power (e.g., a higher FLOP/s number). A memory bandwidth-bound workload might be sped up by leveraging chips with higher bandwidth.
 
-![Figure 9-2. The roofline chart can help you visualize whether an operation is compute-bound or memory bandwidth-bound. This graph is on a log scale.](images/fig9-2.png)
+![Figure 9-2. The roofline chart can help you visualize whether an operation is compute-bound or memory bandwidth-bound. This graph is on a log scale.](/assets/en/09-inference-optimization/p779_01.png)
 
 Different model architectures and workloads result in different computational bottlenecks. For example, inference for image generators like Stable Diffusion is typically compute-bound, whereas inference for autoregression language models is typically memory bandwidth-bound.
 
@@ -67,7 +67,7 @@ As an illustration, let’s look into language model inference. Recall from Chap
 
 Figure 9-3 visualizes prefilling and decoding.
 
-![Figure 9-3. Autoregressive language models follow two steps for inference: prefill and decode. `<eos>` denotes the end of the sequence token.](images/fig9-3.png)
+![Figure 9-3. Autoregressive language models follow two steps for inference: prefill and decode. `<eos>` denotes the end of the sequence token.](/assets/en/09-inference-optimization/p781_01.png)
 
 Because prefill and decode have different computational profiles, they are often decoupled in production with separate machines. This technique will be discussed in "Inference Service Optimization".
 
@@ -165,7 +165,7 @@ Due to this trade-off, focusing on an inference service based solely on its thro
 
 Imagine that your application has the following objectives: TTFT of at most 200 ms and TPOT of at most 100 ms. Let’s say that your inference service can complete 100 requests per minute. However, out of these 100 requests, only 30 satisfy the SLO. Then, the goodput of this service is 30 requests per minute. A visualization of this is shown in Figure 9-4.
 
-![Figure 9-4. If an inference service can complete 10 RPS but only 3 satisfy the SLO, then its goodput is 3 RPS.](images/fig9-4.png)
+![Figure 9-4. If an inference service can complete 10 RPS but only 3 satisfy the SLO, then its goodput is 3 RPS.](/assets/en/09-inference-optimization/p791_01.png)
 
 #### Utilization, MFU, and MBU
 
@@ -216,7 +216,7 @@ Because training can benefit from more efficient optimization (e.g., better batc
 
 Figure 9-5 shows the MBU for the inference process using Llama 2-70B in FP16 on different hardware. The decline is likely due to the higher computational load per second with more users, shifting the workload from being bandwidth-bound to compute-bound.
 
-![Figure 9-5. Bandwidth utilization for Llama 2-70B in FP16 across three different chips shows a decrease in MBU as the number of concurrent users increases. Image from "LLM Training and Inference with Intel Gaudi 2 AI Accelerators" (Databricks, 2024).](images/fig9-5.png)
+![Figure 9-5. Bandwidth utilization for Llama 2-70B in FP16 across three different chips shows a decrease in MBU as the number of concurrent users increases. Image from "LLM Training and Inference with Intel Gaudi 2 AI Accelerators" (Databricks, 2024).](/assets/en/09-inference-optimization/p796_01.png)
 
 Utilization metrics are helpful to track your system’s efficiency. Higher utilization rates for similar workloads on the same hardware generally mean that your services are becoming more efficient. However, the goal isn’t to get the chips with the highest utilization. What you really care about is how to get your jobs done faster and cheaper. A higher utilization rate means nothing if the cost and latency both increase.
 
@@ -227,6 +227,34 @@ How fast and cheap software can run depends on the hardware it runs on. While th
 The development of AI models and hardware has always been intertwined. The lack of sufficiently powerful computers was one of the contributing factors to the first AI winter in the 1970s.
 
 The revival of interest in deep learning in 2012 was also closely tied to compute. One commonly acknowledged reason for the popularity of AlexNet (Krizhevsky et al., 2012) is that it was the first paper to successfully use GPUs, graphics processing units, to train neural networks. Before GPUs, if you wanted to train a model at AlexNet’s scale, you’d have to use thousands of CPUs, like the one Google released just a few months before AlexNet. Compared to thousands of CPUs, a couple of GPUs were a lot more accessible to PhD students and researchers, setting off the deep learning research boom.
+
+![Figure (page 844)](/assets/en/09-inference-optimization/p844_01.png)
+
+![Figure (page 843)](/assets/en/09-inference-optimization/p843_01.png)
+
+![Figure (page 839)](/assets/en/09-inference-optimization/p839_01.png)
+
+![Figure (page 836)](/assets/en/09-inference-optimization/p836_01.png)
+
+![Figure (page 835)](/assets/en/09-inference-optimization/p835_01.png)
+
+![Figure (page 832)](/assets/en/09-inference-optimization/p832_01.png)
+
+![Figure (page 827)](/assets/en/09-inference-optimization/p827_01.png)
+
+![Figure (page 821)](/assets/en/09-inference-optimization/p821_01.png)
+
+![Figure (page 820)](/assets/en/09-inference-optimization/p820_01.png)
+
+![Figure (page 817)](/assets/en/09-inference-optimization/p817_01.png)
+
+![Figure (page 813)](/assets/en/09-inference-optimization/p813_01.png)
+
+![Figure (page 808)](/assets/en/09-inference-optimization/p808_01.png)
+
+![Figure (page 805)](/assets/en/09-inference-optimization/p805_01.png)
+
+![Figure (page 800)](/assets/en/09-inference-optimization/p800_01.png)
 
 ### What’s an accelerator?
 
@@ -250,8 +278,6 @@ Consequently, chips designed for inference are often optimized for lower precisi
 There are also chips specialized for different model architectures, such as chips specialized for the transformer. Many chips are designed for data centers, with more and more being designed for consumer devices (such as phones and laptops).
 
 Different hardware architectures have different memory layouts and specialized compute units that evolve over time. These units are optimized for specific data types, such as scalars, vectors, or tensors, as shown in Figure 9-6.
-
-![Figure 9-6. Different compute primitives. Image inspired by Chen et al. (2018).](images/fig9-6.png)
 
 A chip might have a mixture of different compute units optimized for various data types. For example, GPUs traditionally supported vector operations, but many modern GPUs now include tensor cores optimized for matrix and tensor computations. TPUs, on the other hand, are designed with tensor operations as their primary compute primitive. To efficiently operate a model on a hardware architecture, its memory layout and compute primitives need to be taken into account.
 
@@ -292,8 +318,6 @@ An accelerator's memory is measured by its size and bandwidth. These numbers nee
 
 **GPU on-chip SRAM** — Integrated directly into the chip, this memory is used to store frequently accessed data and instructions for nearly instant access. It includes L1 and L2 caches made of SRAM, and, in some architectures, L3 caches as well. These caches are part of the broader on-chip memory, which also includes other components like register files and shared memory. RAM has extremely high data transfer speeds, often exceeding 10 TB/s. The size of GPU SRAM is small, typically 40 MB or under.
 
-![Figure 9-7. The memory hierarchy of an AI accelerator. The numbers are for reference only. The actual numbers vary for each chip.](images/fig9-7.png)
-
 A lot of GPU optimization is about how to make the most out of this memory hierarchy. However, as of this writing, popular frameworks such as PyTorch and TensorFlow don't yet allow fine-grained control of memory access. This has led many AI researchers and engineers to become interested in GPU programming languages such as CUDA (originally Compute Unified Device Architecture), OpenAI's Triton, and ROCm (Radeon Open Compute). The latter is AMD's open source alternative to NVIDIA's proprietary CUDA.
 
 ### Power consumption
@@ -326,8 +350,6 @@ If you opt for cloud providers, you won't need to worry about cooling or electri
 Inference optimization can be done at the model, hardware, or service level. To illustrate their differences, consider archery. Model-level optimization is like crafting better arrows. Hardware-level optimization is like training a stronger and better archer. Service-level optimization is like refining the entire shooting process, including the bow and aiming conditions.
 
 Ideally, optimizing a model for speed and cost shouldn't change the model's quality. However, many techniques might cause model degradation. Figure 9-8 shows the same Llama models' performance on different benchmarks, served by different inference service providers.
-
-![Figure 9-8. An inference service provider might use optimization techniques that can alter a model's behavior, causing different providers to have slight model quality variations. The experiment was conducted by Cerebras (2024).](images/fig9-8.png)
 
 Since hardware design is outside the scope of this book, I'll discuss techniques at the model and service levels. While the techniques are discussed separately, keep in mind that, in production, optimization typically involves techniques at more than one level.
 
@@ -370,8 +392,6 @@ The process returns to step 1, with the draft model generating K tokens conditio
 
 If no draft token is accepted, this loop produces only one token generated by the target model. If all draft tokens are accepted, this loop produces K + 1 tokens, with K generated by the draft model and one by the target model.
 
-![Figure 9-9. A draft model generates a sequence of K tokens, and the main model accepts the longest subsequence that it agrees with. The image is from "Blockwise Parallel Decoding for Deep Autoregressive Models" (Stern et al., 2018).](images/fig9-9.png)
-
 If all draft sequences are rejected, the target model must generate the entire response in addition to verifying it, potentially leading to increased latency. However, this can be avoided because of these three insights:
 
 1. The time it takes for the target model to verify a sequence of tokens is less than the time it takes to generate it, because verification is parallelizable, while generation is sequential. Speculative decoding effectively turns the computation profile of decoding into that of prefilling.
@@ -394,8 +414,6 @@ Unlike speculative decoding, inference with reference doesn't require an extra m
 
 Examples of how inference with reference works are shown in Figure 9-10.
 
-![Figure 9-10. Two examples of inference with reference. The text spans that are successfully copied from the input are in red and green. Image from Yang et al. (2023). The image is licensed under CC BY 4.0.](images/fig9-10.png)
-
 ##### Parallel decoding
 
 Instead of making autoregressive generation faster with draft tokens, some techniques aim to break the sequential dependency. Given an existing sequence of tokens $x_2, x_t, \ldots, x_{t+1}$, these techniques attempt to generate $x_{t+2}, x_{t+1}, \ldots, x_{t+k}$ simultaneously. This means that the model generates $x_{t+2}$ before it knows that the token before it is $x_{t+1}$.
@@ -413,45 +431,3 @@ However, because these tokens aren't generated sequentially, they need to be ver
 The model keeps refining the generated tokens until they all pass verification and are integrated into the final output. This family of parallel decoding algorithms is also called Jacobi decoding.
 
 On the other hand, Medusa uses a tree-based attention mechanism to verify and integrate tokens. Each Medusa head produces several options for each position. These options are then organized into a tree-like structure to select the most promising combination. The process is visualized in Figure 9-11.
-
-![Figure 9-11. In Medusa (Cai et al., 2024), multiple decoding heads generate several options for each position, which are then organized into a tree structure to select the most promising combination.](images/fig9-11.png)
-
-## Figures
-
-![Figure](/assets/en/09-inference-optimization/p776_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p779_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p781_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p791_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p796_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p800_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p805_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p808_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p813_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p817_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p820_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p821_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p827_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p832_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p835_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p836_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p839_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p843_01.png)
-
-![Figure](/assets/en/09-inference-optimization/p844_01.png)

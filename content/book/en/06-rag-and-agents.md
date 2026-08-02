@@ -221,6 +221,22 @@ Additionally, BEIR (Benchmarking IR) (Thakur et al., 2021) is an evaluation harn
 
 To summarize, the quality of a RAG system should be evaluated both component by component and end to end. To do this, you should do the following things:
 
+![Figure (page 584)](/assets/en/06-rag-and-agents/p584_01.png)
+
+![Figure (page 575)](/assets/en/06-rag-and-agents/p575_01.png)
+
+![Figure (page 573)](/assets/en/06-rag-and-agents/p573_01.png)
+
+![Figure (page 571)](/assets/en/06-rag-and-agents/p571_01.png)
+
+![Figure (page 570)](/assets/en/06-rag-and-agents/p570_01.png)
+
+![Figure (page 566)](/assets/en/06-rag-and-agents/p566_01.png)
+
+![Figure (page 561)](/assets/en/06-rag-and-agents/p561_01.png)
+
+![Figure (page 549)](/assets/en/06-rag-and-agents/p549_01.png)
+
 1. Evaluate the retrieval quality.
 2. Evaluate the final RAG outputs.
 3. Evaluate the embeddings (for embedding-based retrieval).
@@ -424,21 +440,3 @@ Figure 6-8 shows a visualization of SWE-agent (Yang et al., 2024), an agent buil
 An AI agent is meant to accomplish tasks typically provided by the users in the inputs. In an AI agent, AI is the brain that processes the information it receives, including the task and feedback from the environment, plans a sequence of actions to achieve this task, and determines whether the task has been accomplished.
 
 Let's get back to the RAG system with tabular data in the Kitty Vogue example. This is a simple agent with three actions: response generation, text-to-SQL, and SQL execution.
-
-## Additional Figures
-
-![Figure](/assets/en/06-rag-and-agents/p549_01.png)
-
-![Figure](/assets/en/06-rag-and-agents/p561_01.png)
-
-![Figure](/assets/en/06-rag-and-agents/p566_01.png)
-
-![Figure](/assets/en/06-rag-and-agents/p570_01.png)
-
-![Figure](/assets/en/06-rag-and-agents/p571_01.png)
-
-![Figure](/assets/en/06-rag-and-agents/p573_01.png)
-
-![Figure](/assets/en/06-rag-and-agents/p575_01.png)
-
-![Figure](/assets/en/06-rag-and-agents/p584_01.png)

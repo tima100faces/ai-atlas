@@ -177,6 +177,30 @@ language: "ru"
 
 Модель генерирует по одному выходному токену за раз. Как будет показано в главе 9, распараллеливаемая природа предварительного заполнения и последовательный характер декодирования побуждают задействовать множество методов оптимизации, чтобы сделать вывод языковой модели более дешевым и быстрым.
 
+
+
+
+
+
+
+
+
+
+
+
+
+![Рисунок (стр. 144)](/assets/ru/02-understanding-foundation-models/p144_02.png)
+![Рисунок (стр. 144)](/assets/ru/02-understanding-foundation-models/p144_01.png)
+![Рисунок (стр. 142)](/assets/ru/02-understanding-foundation-models/p142_01.png)
+![Рисунок (стр. 134)](/assets/ru/02-understanding-foundation-models/p134_01.png)
+![Рисунок (стр. 131)](/assets/ru/02-understanding-foundation-models/p131_02.png)
+![Рисунок (стр. 126)](/assets/ru/02-understanding-foundation-models/p126_04.png)
+![Рисунок (стр. 126)](/assets/ru/02-understanding-foundation-models/p126_02.png)
+![Рисунок (стр. 124)](/assets/ru/02-understanding-foundation-models/p124_05.png)
+![Рисунок (стр. 123)](/assets/ru/02-understanding-foundation-models/p123_03.png)
+![Рисунок (стр. 122)](/assets/ru/02-understanding-foundation-models/p122_02.png)
+![Рисунок (стр. 119)](/assets/ru/02-understanding-foundation-models/p119_03.png)
+![Рисунок (стр. 119)](/assets/ru/02-understanding-foundation-models/p119_01.png)
 **Механизм внимания.** В основе архитектуры «трансформер» лежит механизм внимания. Нужно проанализировать его, чтобы понять, как работают модели на базе трансформера. Механизм внимания использует векторы ключей, значений и запросов.
 
 - Вектор запросов (Q) обозначает текущее состояние декодера на каждом шаге декодирования. Если взять тот же пример с описанием книги, то вектор запросов можно представить как человека, который ищет информацию для написания аннотации книги.
@@ -357,29 +381,3 @@ $$\text{ReLU}(x) = \max(0, x).$$
 Однако маловероятно, что вы сможете задействовать компьютеры на максимальной мощности постоянно. Показатель использования процессора измеряет, какой процент от максимальной вычислительной мощности можно задействовать. Какой показатель использования процессора считать хорошим, зависит от модели, нагрузки и оборудования. Обычно, если удается достичь половины заявленной производительности — 50 % использования процессора, это считается нормальным. Любые показатели выше 70 % считаются отличными. Не позволяйте этому правилу отбить у вас желание стремиться к еще более высоким показателям. Аппаратные показатели и использование процессора подробно рассматриваются в главе 9.
 
 При эффективности использования процессора 70 % и стоимости работы одного процессора...
-
-## Дополнительные иллюстрации
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p119_01.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p119_03.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p122_02.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p123_03.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p124_05.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p126_02.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p126_04.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p131_02.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p134_01.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p142_01.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p144_01.png)
-
-![Рисунок](/assets/ru/02-understanding-foundation-models/p144_02.png)

@@ -19,7 +19,7 @@ A full-fledged AI architecture can be complex. This section follows the process 
 
 In its simplest form, your application receives a query and sends it to the model. The model generates a response, which is returned to the user, as shown in Figure 10-1. There is no context augmentation, no guardrails, and no optimization. The Model API box refers to both third-party APIs (e.g., OpenAI, Google, Anthropic) and self-hosted models. Building an inference server for self-hosted models is discussed in Chapter 9.
 
-![Figure 10-1. The simplest architecture for running an AI application.](images/fig10-1.png)
+![Figure 10-1. The simplest architecture for running an AI application.](/assets/en/10-ai-engineering-architecture/p853_01.png)
 
 From this simple architecture, you can add more components as needs arise. The process might look as follows:
 
@@ -43,7 +43,7 @@ However, just like models differ in their capabilities, these providers differ i
 
 With context construction, the architecture now looks like Figure 10-2.
 
-![Figure 10-2. A platform architecture with context construction.](images/fig10-2.png)
+![Figure 10-2. A platform architecture with context construction.](/assets/en/10-ai-engineering-architecture/p856_01.png)
 
 ### Step 2. Put in Guardrails
 
@@ -67,7 +67,7 @@ There's no airtight way to eliminate potential leaks when using third-party APIs
 
 Many sensitive data detection tools use AI to identify potentially sensitive information, such as determining if a string resembles a valid home address. If a query is found to contain sensitive information, you have two options: block the entire query or remove the sensitive information from it. For instance, you can mask a user's phone number with the placeholder `[PHONE NUMBER]`. If the generated response contains this placeholder, use a PII reverse dictionary that maps this placeholder to the original information so that you can unmask it, as shown in Figure 10-3.
 
-![Figure 10-3. An example of masking and unmasking PII information using a reverse PII map to avoid sending it to external APIs.](images/fig10-3.png)
+![Figure 10-3. An example of masking and unmasking PII information using a reverse PII map to avoid sending it to external APIs.](/assets/en/10-ai-engineering-architecture/p858_01.png)
 
 #### Output Guardrails
 
@@ -111,7 +111,7 @@ Guardrails can also be implemented by application developers. Many techniques ar
 
 With guardrails, the architecture looks like Figure 10-4. I put scorers under model APIs since scorers are often AI-powered, even if scorers are typically smaller and faster than generative models. However, scorers can also be placed in the output guardrails box.
 
-![Figure 10-4. Application architecture with the addition of input and output guardrails.](images/fig10-4.png)
+![Figure 10-4. Application architecture with the addition of input and output guardrails.](/assets/en/10-ai-engineering-architecture/p863_01.png)
 
 ### Step 3. Add Model Router and Gateway
 
@@ -141,13 +141,13 @@ Because routing is usually done by models, I put routing inside the Model API bo
 
 Grouping routers together with other models makes models easier to manage. However, it's important to note that routing often happens before retrieval. For example, before retrieval, a router can help determine if a query is in-scope and, if yes, if it needs retrieval. Routing can happen after retrieval, too, such as determining if a query should be routed to a human operator. However, routing - retrieval - generation - scoring is a much more common AI application pattern.
 
-![Figure 10-5. Routing helps the system use the optimal solution for each query.](images/fig10-5.png)
+![Figure 10-5. Routing helps the system use the optimal solution for each query.](/assets/en/10-ai-engineering-architecture/p866_01.png)
 
 #### Gateway
 
 A model gateway is an intermediate layer that allows your organization to interface with different models in a unified and secure manner. The most basic functionality of a model gateway is to provide a unified interface to different models, including self-hosted models and models behind commercial APIs. A model gateway makes it easier to maintain your code. If a model API changes, you only need to update the gateway instead of updating all applications that depend on this API. Figure 10-6 shows a high-level visualization of a model gateway.
 
-![Figure 10-6. A model gateway provides a unified interface to work with different models.](images/fig10-6.png)
+![Figure 10-6. A model gateway provides a unified interface to work with different models.](/assets/en/10-ai-engineering-architecture/p867_01.png)
 
 In its simplest form, a model gateway is a unified wrapper. The following code example gives you an idea of how a model gateway might be implemented. It's not meant to be functional, as it doesn't contain any error checking or optimization:
 
@@ -196,7 +196,7 @@ Given that gateways are relatively straightforward to implement, there are many 
 
 In our architecture, the gateway now replaces the model API box, as shown in Figure 10-7.
 
-![Figure 10-7. The architecture with the added routing and gateway modules.](images/fig10-7.png)
+![Figure 10-7. The architecture with the added routing and gateway modules.](/assets/en/10-ai-engineering-architecture/p870_01.png)
 
 > **NOTE**
 > A similar abstraction layer, such as a tool gateway, can also be useful for accessing a wide range of tools. It's not discussed in this book since it's not a common pattern as of this writing.
@@ -240,19 +240,41 @@ Semantic cache might still be worthwhile if the cache hit rate is high, meaning 
 
 With the added cache systems, the platform looks like Figure 10-8. A KV cache and prompt cache are typically implemented by model API providers, so they aren't shown in this image. To visualize them, I'd put them in the Model API box. There's a new arrow to add generated responses to the cache.
 
-![Figure 10-8. An AI application architecture with the added caches.](images/fig10-8.png)
+![Figure 10-8. An AI application architecture with the added caches.](/assets/en/10-ai-engineering-architecture/p875_01.png)
 
 ### Step 5. Add Agent Patterns
 
-The applications discussed so far are still fairly simple. Each query follows a sequential flow. However, as discussed in Chapter 6, an application flow can be more complex with loops, parallel execution, and conditional branching. Agentic patterns, discussed in Chapter 6, can help you build complex applications. For example, after the system generates an output, it might determine that it hasn't accomplished the task and that it needs to perform another retrieval to gather more information. The original response, together with the newly retrieved context, is passed into the same model or a different one. This creates a loop, as shown in Figure 10-9.
+![Figure (page 920)](/assets/en/10-ai-engineering-architecture/p920_01.png)
 
-![Figure 10-9. The yellow arrow allows the generated response to be fed back into the system, allowing more complex application patterns.](images/fig10-9.png)
+![Figure (page 919)](/assets/en/10-ai-engineering-architecture/p919_01.png)
+
+![Figure (page 917)](/assets/en/10-ai-engineering-architecture/p917_01.png)
+
+![Figure (page 916)](/assets/en/10-ai-engineering-architecture/p916_01.png)
+
+![Figure (page 913)](/assets/en/10-ai-engineering-architecture/p913_01.png)
+
+![Figure (page 912)](/assets/en/10-ai-engineering-architecture/p912_01.png)
+
+![Figure (page 911)](/assets/en/10-ai-engineering-architecture/p911_01.png)
+
+![Figure (page 910)](/assets/en/10-ai-engineering-architecture/p910_01.png)
+
+![Figure (page 905)](/assets/en/10-ai-engineering-architecture/p905_01.png)
+
+![Figure (page 899)](/assets/en/10-ai-engineering-architecture/p899_01.png)
+
+![Figure (page 888)](/assets/en/10-ai-engineering-architecture/p888_01.png)
+
+![Figure (page 877)](/assets/en/10-ai-engineering-architecture/p877_01.png)
+
+![Figure (page 876)](/assets/en/10-ai-engineering-architecture/p876_01.png)
+
+The applications discussed so far are still fairly simple. Each query follows a sequential flow. However, as discussed in Chapter 6, an application flow can be more complex with loops, parallel execution, and conditional branching. Agentic patterns, discussed in Chapter 6, can help you build complex applications. For example, after the system generates an output, it might determine that it hasn't accomplished the task and that it needs to perform another retrieval to gather more information. The original response, together with the newly retrieved context, is passed into the same model or a different one. This creates a loop, as shown in Figure 10-9.
 
 A model's outputs also can be used to invoke write actions, such as composing an email, placing an order, or initializing a bank transfer. Write actions allow a system to make changes to its environment directly. As discussed in Chapter 6, write actions can make a system vastly more capable but also expose it to significantly more risks. Giving a model access to write actions should be done with the utmost care. With added write actions, the architecture looks like Figure 10-10.
 
 If you've followed all the steps so far, your architecture has likely grown quite complex. While complex systems can solve more tasks, they also introduce more failure modes, making them harder to debug due to the many potential points of failure. The next section will cover best practices for improving system observability.
-
-![Figure 10-10. An application architecture that enables the system to perform write actions.](images/fig10-10.png)
 
 ## Monitoring and Observability
 
@@ -344,8 +366,6 @@ While it's impossible to process logs manually, it's useful to manually inspect 
 If logs are a series of disjointed events, traces are reconstructed by linking related events together to form a complete timeline of a transaction or process, showing how each step connects from start to finish. In short, a trace is the detailed recording of a request's execution path through various system components and services. In an AI application, tracing reveals the entire process from when a user sends a query to when the final response is returned, including the actions the system takes, the documents retrieved, and the final prompt sent to the model. It should also show how much time each step takes and its associated cost, if measurable. Figure 10-11 is a visualization of a request's trace in LangSmith.
 
 Ideally, you should be able to trace each query's transformation step-by-step through the system. If a query fails, you should be able to pinpoint the exact step where it went wrong: whether it was incorrectly processed, the retrieved context was irrelevant, or the model generated a wrong response.
-
-![Figure 10-11. A request trace visualized by LangSmith.](images/fig10-11.png)
 
 ### Drift Detection
 
@@ -444,47 +464,3 @@ User feedback, extracted from conversations, can be used for evaluation, develop
 - **Personalization**: personalize the application to each user
 
 Implicit conversational feedback can be inferred from both the content of user messages and their patterns of communication. Because feedback is blended into daily conversations, it's also challenging to extract.
-
-## Figures
-
-![Figure](/assets/en/10-ai-engineering-architecture/p853_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p856_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p858_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p863_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p866_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p867_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p870_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p875_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p876_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p877_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p888_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p899_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p905_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p910_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p911_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p912_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p913_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p916_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p917_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p919_01.png)
-
-![Figure](/assets/en/10-ai-engineering-architecture/p920_01.png)

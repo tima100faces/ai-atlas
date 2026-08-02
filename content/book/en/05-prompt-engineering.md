@@ -244,6 +244,18 @@ Account Management secondary categories:
 General Inquiry secondary categories:
 - …
 
+![Figure (page 485)](/assets/en/05-prompt-engineering/p485_01.png)
+
+![Figure (page 482)](/assets/en/05-prompt-engineering/p482_01.png)
+
+![Figure (page 480)](/assets/en/05-prompt-engineering/p480_01.png)
+
+![Figure (page 479)](/assets/en/05-prompt-engineering/p479_01.png)
+
+![Figure (page 474)](/assets/en/05-prompt-engineering/p474_01.png)
+
+![Figure (page 473)](/assets/en/05-prompt-engineering/p473_01.png)
+
 USER
 I need to get my internet working again.
 ```
@@ -474,17 +486,3 @@ Prompt attacks are possible precisely because models are trained to follow instr
 AI safety, like any area of cybersecurity, is an evolving cat-and-mouse game where developers continuously work to neutralize known threats while attackers devise new ones. Here are a few common approaches that have succeeded in the past, presented in the order of increasing sophistication. Most of them are no longer effective for most models.
 
 [... content truncated ...]
-
-## Additional Figures
-
-![Figure](/assets/en/05-prompt-engineering/p473_01.png)
-
-![Figure](/assets/en/05-prompt-engineering/p474_01.png)
-
-![Figure](/assets/en/05-prompt-engineering/p479_01.png)
-
-![Figure](/assets/en/05-prompt-engineering/p480_01.png)
-
-![Figure](/assets/en/05-prompt-engineering/p482_01.png)
-
-![Figure](/assets/en/05-prompt-engineering/p485_01.png)

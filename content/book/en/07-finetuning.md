@@ -64,7 +64,7 @@ Figure 7-1 shows the making of different Code Llama models (Rozière et al., 202
 
 Finetuning can be done by both model developers and application developers. Model developers typically post-train a model with different finetuning techniques before releasing it. A model developer might also release different model versions, each finetuned to a different extent, so that application developers can choose the version that works best for them.
 
-![Figure 7-1. Different finetuning techniques used to make different Code Llama models. Image from the Rozière et al. (2024). Adapted from an original image licensed under CC BY 4.0.](images/fig7-1.png)
+![Figure 7-1. Different finetuning techniques used to make different Code Llama models. Image from the Rozière et al. (2024). Adapted from an original image licensed under CC BY 4.0.](/assets/en/07-finetuning/p601_01.png)
 
 As an application developer, you might finetune a pre-trained model, but most likely, you’ll finetune a model that has been post-trained. The more refined a model is and the more relevant its knowledge is to your task, the less work you’ll have to do to adapt it.
 
@@ -138,7 +138,7 @@ One benefit of finetuning, before prompt caching was introduced, was that it can
 
 With prompt caching, where repetitive prompt segments can be cached for reuse, this is no longer a strong benefit. Prompt caching is discussed further in Chapter 9. However, the number of examples you can use with a prompt is still limited by the maximum context length. With finetuning, there’s no limit to how many examples you can use.
 
-![Figure 7-2. Instead of including examples in each prompt, which increases cost and latency, you finetune a model on these examples.](images/fig7-2.png)
+![Figure 7-2. Instead of including examples in each prompt, which increases cost and latency, you finetune a model on these examples.](/assets/en/07-finetuning/p611_01.png)
 
 ### Finetuning and RAG
 
@@ -175,7 +175,7 @@ However, RAG and finetuning aren’t mutually exclusive. They can sometimes be u
 
 There’s no universal workflow for all applications. Figure 7-3 shows some paths an application development process might follow over time. The arrow indicates what next step you might try. This figure is inspired by an example workflow shown by OpenAI (2023).
 
-![Figure 7-3. Example application development flows. After simple retrieval (such as term-based retrieval), whether to experiment with more complex retrieval (such as hybrid search) or finetuning depends on each application and its failure modes.](images/fig7-3.png)
+![Figure 7-3. Example application development flows. After simple retrieval (such as term-based retrieval), whether to experiment with more complex retrieval (such as hybrid search) or finetuning depends on each application and its failure modes.](/assets/en/07-finetuning/p616_01.png)
 
 So the workflow to adapt a model to a task might work as follows. Note that before any of the adaptation steps, you should define your evaluation criteria and design your evaluation pipeline, as discussed in Chapter 4. This evaluation pipeline is what you’ll use to benchmark your progress as you develop your application. Evaluation doesn’t happen only in the beginning. It should be present during every step of the process:
 
@@ -212,6 +212,40 @@ A key factor that determines a model’s memory footprint during finetuning is i
 
 The memory needed for each trainable parameter results from the way a model is trained. As of this writing, neural networks are typically trained using a mechanism called backpropagation. With backpropagation, each training step consists of two phases:
 
+
+![Figure (page 679)](/assets/en/07-finetuning/p679_01.png)
+
+![Figure (page 678)](/assets/en/07-finetuning/p678_01.png)
+
+![Figure (page 677)](/assets/en/07-finetuning/p677_01.png)
+
+![Figure (page 674)](/assets/en/07-finetuning/p674_01.png)
+
+![Figure (page 673)](/assets/en/07-finetuning/p673_01.png)
+
+![Figure (page 670)](/assets/en/07-finetuning/p670_01.png)
+
+![Figure (page 669)](/assets/en/07-finetuning/p669_01.png)
+
+![Figure (page 668)](/assets/en/07-finetuning/p668_01.png)
+
+![Figure (page 658)](/assets/en/07-finetuning/p658_01.png)
+
+![Figure (page 650)](/assets/en/07-finetuning/p650_01.png)
+
+![Figure (page 648)](/assets/en/07-finetuning/p648_01.png)
+
+![Figure (page 647)](/assets/en/07-finetuning/p647_01.png)
+
+![Figure (page 643)](/assets/en/07-finetuning/p643_01.png)
+
+![Figure (page 642)](/assets/en/07-finetuning/p642_01.png)
+
+![Figure (page 629)](/assets/en/07-finetuning/p629_01.png)
+
+![Figure (page 627)](/assets/en/07-finetuning/p627_01.png)
+
+![Figure (page 622)](/assets/en/07-finetuning/p622_01.png)
 1. **Forward pass**: the process of computing the output from the input.
 2. **Backward pass**: the process of updating the model’s weights using the aggregated signals from the forward pass.
 
@@ -222,8 +256,6 @@ During inference, only the forward pass is executed. During training, both passe
 3. Adjust trainable parameter values using their corresponding gradient. How much each parameter should be readjusted, given its gradient value, is determined by the optimizer. Common optimizers include SGD (stochastic gradient descent) and Adam. For transformer-based models, Adam is, by far, the most widely used optimizer.
 
 The forward and backward pass for a hypothetical neural network with three parameters and one nonlinear activation function is visualized in Figure 7-4. I use this dummy neural network to simplify the visualization.
-
-![Figure 7-4. The forward and backward pass of a simple neural network.](images/fig7-4.png)
 
 During the backward pass, each trainable parameter comes with additional values, its gradient, and its optimizer states. Therefore, the more trainable parameters there are, the more memory is needed to store these additional values.
 
@@ -278,8 +310,6 @@ One important thing to note is that in the previous formula, I assumed that the 
 
 One way to reduce the memory needed for activations is not to store them. Instead of storing activations for reuse, you recompute activations when necessary. This technique is called gradient checkpointing or activation recomputation. While this reduces the memory requirements, it increases the time needed for training due to the recomputation.
 
-![Figure 7-5. The memory needed for activations can dwarf the memory needed for the model’s weights. Image from Korthikanti et al., 2022.](images/fig7-5.png)
-
 ### Numerical Representations
 
 In the memory calculation so far, I’ve assumed that each value takes up two bytes of memory. The memory required to represent each value in a model contributes directly to the model’s overall memory footprint. If you reduce the memory needed for each value by half, the memory needed for the model’s weights is also reduced by half.
@@ -300,8 +330,6 @@ Each float format usually has 1 bit to represent the number’s sign, i.e., nega
 - **Precision**: The number of precision bits determines how precisely a number can be represented. Reducing the number of precision bits makes a number less precise. For example, if you convert 10.1234 to a format that can support only two decimal digits, this value becomes 10.12, which is less precise than the original value.
 
 Figure 7-6 shows different floating point formats along with their range and precision bits.
-
-![Figure 7-6. Different numerical formats with their range and precision.](images/fig7-6.png)
 
 Formats with more bits are considered higher precision. Converting a number with a high-precision format into a low-precision format (e.g., from FP32 to FP16) means reducing its precision. Reducing precision can cause a value to change or result in errors. Table 7-3 shows how FP32 values can be converted into FP16, BF16, and TF32.
 
@@ -384,45 +412,3 @@ A quantization technique might help achieve one or both of these goals. Quantiza
 On the other hand, training a model directly in lower precision can help with both goals. People attempted to train models in reduced precision as early as 2016; see Hubara et al. (2016) and Jacob et al. (2017). Character.AI (2024) shared that they were able to train their models entirely in INT8, which helped eliminate the training/serving precision mismatch while also significantly improving training efficiency. However, training in lower precision is harder to do, as backpropagation is more sensitive to lower precision.
 
 Lower-precision training is often done in mixed precision, where a copy of the weights is kept in higher precision but other values, such as gradients and activations, are kept in lower precision. You can also have less-sensitive weight values computed in lower precision and more-sensitive weight values computed in higher precision. For example, a common approach is to keep a master copy of weights in FP32, while using FP16 or BF16 for forward and backward passes, and then updating the FP32 master weights with the lower-precision gradients. This approach, known as mixed-precision training, has become standard practice in deep learning frameworks.
-
-## Figures
-
-![Figure](/assets/en/07-finetuning/p601_01.png)
-
-![Figure](/assets/en/07-finetuning/p611_01.png)
-
-![Figure](/assets/en/07-finetuning/p616_01.png)
-
-![Figure](/assets/en/07-finetuning/p622_01.png)
-
-![Figure](/assets/en/07-finetuning/p627_01.png)
-
-![Figure](/assets/en/07-finetuning/p629_01.png)
-
-![Figure](/assets/en/07-finetuning/p642_01.png)
-
-![Figure](/assets/en/07-finetuning/p643_01.png)
-
-![Figure](/assets/en/07-finetuning/p647_01.png)
-
-![Figure](/assets/en/07-finetuning/p648_01.png)
-
-![Figure](/assets/en/07-finetuning/p650_01.png)
-
-![Figure](/assets/en/07-finetuning/p658_01.png)
-
-![Figure](/assets/en/07-finetuning/p668_01.png)
-
-![Figure](/assets/en/07-finetuning/p669_01.png)
-
-![Figure](/assets/en/07-finetuning/p670_01.png)
-
-![Figure](/assets/en/07-finetuning/p673_01.png)
-
-![Figure](/assets/en/07-finetuning/p674_01.png)
-
-![Figure](/assets/en/07-finetuning/p677_01.png)
-
-![Figure](/assets/en/07-finetuning/p678_01.png)
-
-![Figure](/assets/en/07-finetuning/p679_01.png)

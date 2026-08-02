@@ -200,6 +200,16 @@ Goldman Sachs Research estimated that AI investment could approach $100 billion 
 
 ![Figure 1-5. The number of S&P 500 companies that mention AI in their earnings calls reached a record high in 2023. Data from FactSet.](/assets/en/01-introduction/p055_01.png)
 
+
+![Figure (page 113)](/assets/en/01-introduction/p113_01.png)
+
+![Figure (page 96)](/assets/en/01-introduction/p096_01.png)
+
+![Figure (page 95)](/assets/en/01-introduction/p095_01.png)
+
+![Figure (page 93)](/assets/en/01-introduction/p093_01.png)
+
+![Figure (page 92)](/assets/en/01-introduction/p092_01.png)
 According to WallStreetZen, companies that mentioned AI in their earning calls saw their stock price increase more than those that didn't: an average of a 4.6% increase compared to 2.4%. It's unclear whether it's causation (AI makes these companies more successful) or correlation (companies are successful because they are quick to adapt to new technologies).
 
 **Factor 3: Low entrance barrier to building AI applications**
@@ -390,15 +400,3 @@ AI can help with exactly that. AI can automatically generate text descriptions a
 AI is very good with data analysis. It can write programs to generate data visualization, identify outliers, and make predictions like revenue forecasts.
 
 Enterprises can use
-
-## Additional Figures
-
-![Figure](/assets/en/01-introduction/p092_01.png)
-
-![Figure](/assets/en/01-introduction/p093_01.png)
-
-![Figure](/assets/en/01-introduction/p095_01.png)
-
-![Figure](/assets/en/01-introduction/p096_01.png)
-
-![Figure](/assets/en/01-introduction/p113_01.png)
