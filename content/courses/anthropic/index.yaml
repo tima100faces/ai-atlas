@@ -82,7 +82,7 @@ courses:
     url: "https://anthropic.skilljar.com/introduction-to-subagents"
     type: "course"
     priority: 4
-    estimated_time: "40m"
+    estimated_time: "—"
     lectures: 4
     quizzes: 0
     description: >
@@ -105,7 +105,7 @@ courses:
     url: "https://anthropic.skilljar.com/introduction-to-agent-skills"
     type: "course"
     priority: 5
-    estimated_time: "50m"
+    estimated_time: "—"
     lectures: 6
     quizzes: 0
     description: >
@@ -132,7 +132,7 @@ courses:
     url: "https://www.anthropic.com/engineering/building-effective-agents"
     type: "article"
     priority: 6
-    estimated_time: "30m"
+    estimated_time: "—"
     lectures: 0
     quizzes: 0
     description: >
