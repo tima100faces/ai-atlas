@@ -147,10 +147,10 @@ export default function Reader({ onNavigate }: ReaderProps) {
       .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // Images (before links — ! prefix)
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="chapter-image" />')
       // Links
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
-      // Images
-      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<span class="image-ref">[Image: $1]</span>')
       // Tables (simple)
       .replace(/^\|(.+)\|$/gm, (match: string) => {
         const cells = match.split('|').filter(c => c.trim())
@@ -369,10 +369,9 @@ export default function Reader({ onNavigate }: ReaderProps) {
           border-left: 3px solid var(--accent); padding: 4px 16px; margin: 12px 0;
           color: var(--text-secondary); font-style: italic;
         }
-        .chapter-content .image-ref {
-          display: block; padding: 20px; margin: 12px 0;
-          background: var(--bg-secondary); border: 1px dashed var(--border);
-          border-radius: 8px; text-align: center; color: var(--text-secondary); font-size: 13px;
+        .chapter-content .chapter-image {
+          display: block; max-width: 100%; height: auto; margin: 20px auto;
+          border-radius: 8px; border: 1px solid var(--border);
         }
       `}</style>
     </div>
