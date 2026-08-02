@@ -191,7 +191,7 @@ def get_overall_progress(_: None = Depends(check_auth)):
         progress = {
             "book_percent": round(done / total * 100) if total > 0 else 0,
             "current_chapter_id": book.get("overall", {}).get("current_chapter_id"),
-            "current_language": book.get("overall", {}).get("current_language", "ru"),
+            "current_language": book.get("overall", {}).get("current_language", "en"),
         }
     return progress
 

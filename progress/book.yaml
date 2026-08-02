@@ -3,7 +3,7 @@ updated_at: "2026-08-02T11:00:00+03:00"
 overall:
   percent: 0
   current_chapter_id: "01-introduction"
-  current_language: "ru"
+  current_language: "en"
 
 chapters:
   "00-preface":

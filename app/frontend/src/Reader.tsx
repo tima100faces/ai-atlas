@@ -32,7 +32,7 @@ interface ReaderProps {
 export default function Reader({ onNavigate, initialChapterId, initialLanguage }: ReaderProps) {
   const [meta, setMeta] = useState<Meta | null>(null)
   const [progress, setProgress] = useState<Record<string, ChapterProgress>>({})
-  const [language, setLanguage] = useState<Language>((initialLanguage as Language) || 'ru')
+  const [language, setLanguage] = useState<Language>((initialLanguage as Language) || 'en')
   const [activeChapter, setActiveChapter] = useState<Chapter | null>(null)
   const [content, setContent] = useState<string>('')
   const [note, setNote] = useState('')

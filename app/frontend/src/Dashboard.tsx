@@ -130,7 +130,7 @@ export default function Dashboard({ onNavigate }: DashboardProps) {
   const doneChapters = progress?.done_chapters || 0
   const totalChapters = progress?.total_chapters || meta?.chapters?.length || 11
   const currentChap = progress?.current_chapter_id
-  const currentLang = progress?.current_language || 'ru'
+  const currentLang = progress?.current_language || 'en'
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-primary)' }}>

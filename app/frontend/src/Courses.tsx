@@ -332,7 +332,7 @@ export default function Courses({ onNavigate }: CoursesProps) {
                           {course.related_chapters.map(chId => (
                             <span
                               key={chId}
-                              onClick={() => onNavigate('reader', { chapterId: chId, language: 'ru' })}
+                              onClick={() => onNavigate('reader', { chapterId: chId, language: 'en' })}
                               style={{
                                 padding: '3px 10px', borderRadius: 6,
                                 background: 'var(--bg-primary)', border: '1px solid var(--accent)',
