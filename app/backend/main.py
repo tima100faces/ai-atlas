@@ -94,6 +94,16 @@ def get_book_meta(_: None = Depends(check_auth)):
         return yaml.safe_load(f)
 
 
+@app.get("/api/content/courses/anthropic")
+def get_courses_catalog(_: None = Depends(check_auth)):
+    """Return Anthropic course catalog (static metadata)."""
+    catalog_path = CONTENT_DIR / "courses" / "anthropic" / "index.yaml"
+    if not catalog_path.exists():
+        return {"courses": []}
+    with open(catalog_path) as f:
+        return yaml.safe_load(f)
+
+
 # --- Progress endpoints ---
 def read_yaml(path: Path) -> dict:
     if not path.exists():
@@ -121,13 +131,51 @@ async def update_book_progress(request: Request, _: None = Depends(check_auth)):
 
 @app.get("/api/progress/courses")
 def get_courses_progress(_: None = Depends(check_auth)):
-    return read_yaml(PROGRESS_DIR / "courses.yaml")
+    """Return courses with merged catalog metadata + user progress."""
+    progress_data = read_yaml(PROGRESS_DIR / "courses.yaml")
+    catalog_data = read_yaml(CONTENT_DIR / "courses" / "anthropic" / "index.yaml")
+
+    progress_courses = {c["id"]: c for c in progress_data.get("courses", [])}
+    catalog_courses = catalog_data.get("courses", [])
+
+    merged = []
+    for cat in catalog_courses:
+        cid = cat["id"]
+        prog = progress_courses.get(cid, {})
+        merged.append({
+            **cat,
+            "status": prog.get("status", "todo"),
+            "notes": prog.get("notes", ""),
+            "takeaways": prog.get("takeaways", []),
+            "started_at": prog.get("started_at"),
+            "completed_at": prog.get("completed_at"),
+        })
+
+    return {
+        "updated_at": progress_data.get("updated_at"),
+        "courses": merged,
+    }
 
 
 @app.put("/api/progress/courses")
 async def update_courses_progress(request: Request, _: None = Depends(check_auth)):
     data = await request.json()
-    write_yaml(PROGRESS_DIR / "courses.yaml", data)
+    # Extract only user-progress fields, discard static metadata
+    progress_only = {
+        "updated_at": data.get("updated_at"),
+        "courses": [
+            {
+                "id": c["id"],
+                "status": c.get("status", "todo"),
+                "notes": c.get("notes", ""),
+                "takeaways": c.get("takeaways", []),
+                "started_at": c.get("started_at"),
+                "completed_at": c.get("completed_at"),
+            }
+            for c in data.get("courses", [])
+        ],
+    }
+    write_yaml(PROGRESS_DIR / "courses.yaml", progress_only)
     return {"status": "ok"}
 
 

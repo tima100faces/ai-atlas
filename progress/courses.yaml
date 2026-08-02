@@ -1,42 +1,48 @@
-updated_at: "2026-08-02T10:30:00+03:00"
+updated_at: "2026-08-02T18:00:00+03:00"
+
+# User progress for Anthropic courses.
+# Static metadata is in content/courses/anthropic/index.yaml
+# Backend merges both files on GET /api/progress/courses
 
 courses:
   - id: "mcp-intro"
-    title: "Introduction to Model Context Protocol"
-    url: "https://anthropic.skilljar.com/introduction-to-model-context-protocol"
     status: "todo"
-    priority: 1
     notes: ""
     takeaways: []
+    started_at: null
+    completed_at: null
 
   - id: "mcp-advanced"
-    title: "Model Context Protocol: Advanced Topics"
-    url: "https://anthropic.skilljar.com/model-context-protocol-advanced-topics"
     status: "todo"
-    priority: 2
     notes: ""
     takeaways: []
+    started_at: null
+    completed_at: null
 
   - id: "claude-code-101"
-    title: "Claude Code 101"
-    url: "https://anthropic.skilljar.com/claude-code-101"
     status: "todo"
-    priority: 3
     notes: ""
     takeaways: []
+    started_at: null
+    completed_at: null
 
   - id: "subagents"
-    title: "Introduction to subagents"
-    url: "https://anthropic.skilljar.com/introduction-to-subagents"
     status: "todo"
-    priority: 4
     notes: ""
     takeaways: []
+    started_at: null
+    completed_at: null
 
   - id: "agent-skills"
-    title: "Introduction to agent skills"
-    url: "https://anthropic.skilljar.com/introduction-to-agent-skills"
     status: "todo"
-    priority: 5
     notes: ""
     takeaways: []
+    started_at: null
+    completed_at: null
+
+  - id: "building-effective-agents"
+    status: "todo"
+    notes: ""
+    takeaways: []
+    started_at: null
+    completed_at: null

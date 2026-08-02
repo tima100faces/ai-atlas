@@ -1,0 +1,156 @@
+# Anthropic Academy — Course Catalog
+# Static metadata. User progress lives in progress/courses.yaml.
+# Schema: id, title, url, type (course|article), priority, estimated_time,
+#         description, topics[], related_chapters[], lectures, quizzes
+
+courses:
+  - id: "mcp-intro"
+    title: "Introduction to Model Context Protocol"
+    url: "https://anthropic.skilljar.com/introduction-to-model-context-protocol"
+    type: "course"
+    priority: 1
+    estimated_time: "1h"
+    lectures: 16
+    quizzes: 1
+    description: >
+      Learn to build modular AI applications using MCP — the open protocol
+      for connecting Claude to external tools and data sources. Build MCP
+      servers with the Python SDK, implement clients, create resources and
+      prompts, and debug with the MCP Inspector. Includes a hands-on project:
+      a document management system using MCP.
+    topics:
+      - "MCP architecture & client-server model"
+      - "Building MCP servers with Python SDK"
+      - "Tools, resources, and prompts"
+      - "MCP Inspector for testing & debugging"
+      - "Async communication & resource cleanup"
+    related_chapters:
+      - "06-rag-and-agents"
+
+  - id: "mcp-advanced"
+    title: "Model Context Protocol: Advanced Topics"
+    url: "https://anthropic.skilljar.com/model-context-protocol-advanced-topics"
+    type: "course"
+    priority: 2
+    estimated_time: "1h 10m"
+    lectures: 15
+    quizzes: 2
+    description: >
+      Deep dive into MCP's advanced features: sampling (server-initiated LLM
+      requests), progress notifications, roots-based file access, and
+      transport implementations (stdio + StreamableHTTP). Covers JSON-RPC
+      message flows, stateless HTTP deployment, and production troubleshooting.
+    topics:
+      - "Sampling: server-initiated LLM requests"
+      - "Progress notifications & logging"
+      - "Roots permission model for file access"
+      - "STDIO vs StreamableHTTP transports"
+      - "JSON-RPC message debugging"
+      - "Stateless HTTP deployment strategies"
+    related_chapters:
+      - "06-rag-and-agents"
+      - "09-inference-optimization"
+
+  - id: "claude-code-101"
+    title: "Claude Code 101"
+    url: "https://anthropic.skilljar.com/claude-code-101"
+    type: "course"
+    priority: 3
+    estimated_time: "1h 30m"
+    lectures: 12
+    quizzes: 1
+    description: >
+      Learn to use Claude Code effectively in your daily development workflow.
+      Covers the agentic loop (gather context → take action → verify results),
+      installation across environments (terminal, VS Code, JetBrains, web),
+      the Explore → Plan → Code → Commit rhythm, context management
+      (/compact, /clear, /context), CLAUDE.md for project conventions,
+      subagents, skills, MCP servers, and hooks.
+    topics:
+      - "The agentic loop & mental model"
+      - "Installation: terminal, VS Code, JetBrains, web"
+      - "Approval mode, auto-accept, Plan Mode"
+      - "Explore → Plan → Code → Commit workflow"
+      - "Context management: /compact, /clear, /context"
+      - "CLAUDE.md, subagents, skills, MCP, hooks"
+    related_chapters:
+      - "10-ai-engineering-architecture"
+      - "06-rag-and-agents"
+
+  - id: "subagents"
+    title: "Introduction to subagents"
+    url: "https://anthropic.skilljar.com/introduction-to-subagents"
+    type: "course"
+    priority: 4
+    estimated_time: "40m"
+    lectures: 4
+    quizzes: 0
+    description: >
+      Learn how to use and create sub-agents in Claude Code to manage context,
+      delegate tasks, and build specialized workflows. Covers how sub-agents
+      spin up isolated context windows, the /agents command, designing
+      reliable sub-agents with structured output and obstacle reporting,
+      and knowing when (and when not) to use them.
+    topics:
+      - "How sub-agents work: isolated context windows"
+      - "Creating sub-agents with /agents command"
+      - "Structured output & obstacle reporting"
+      - "When to use sub-agents (and when not to)"
+      - "Tool access restriction for safety"
+    related_chapters:
+      - "06-rag-and-agents"
+
+  - id: "agent-skills"
+    title: "Introduction to agent skills"
+    url: "https://anthropic.skilljar.com/introduction-to-agent-skills"
+    type: "course"
+    priority: 5
+    estimated_time: "50m"
+    lectures: 6
+    quizzes: 0
+    description: >
+      Build, configure, and share Skills in Claude Code — reusable markdown
+      instructions that Claude automatically applies to the right tasks.
+      Covers SKILL.md frontmatter, effective descriptions, progressive
+      disclosure for context efficiency, allowed-tools restrictions,
+      team distribution via repos/plugins/enterprise settings, and
+      troubleshooting: trigger failures, priority conflicts, runtime errors.
+    topics:
+      - "SKILL.md structure & frontmatter"
+      - "Crafting effective skill descriptions"
+      - "Progressive disclosure & context efficiency"
+      - "Skills vs CLAUDE.md, hooks, subagents"
+      - "allowed-tools & script execution"
+      - "Distribution: repos, plugins, enterprise"
+      - "Troubleshooting: triggers, priorities, errors"
+    related_chapters:
+      - "05-prompt-engineering"
+      - "06-rag-and-agents"
+
+  - id: "building-effective-agents"
+    title: "Building Effective Agents"
+    url: "https://www.anthropic.com/engineering/building-effective-agents"
+    type: "article"
+    priority: 6
+    estimated_time: "30m"
+    lectures: 0
+    quizzes: 0
+    description: >
+      Seminal article by Anthropic (Dec 2024) on building LLM agents.
+      Key insight: the most successful implementations use simple, composable
+      patterns, not complex frameworks. Covers the architectural distinction
+      between workflows (predefined code paths) and agents (dynamic
+      self-direction), when to use each, and practical patterns:
+      prompt chaining, routing, parallelization, orchestrator-workers,
+      evaluator-optimizer. Includes real-world case studies.
+    topics:
+      - "Workflows vs agents: the key architectural distinction"
+      - "When to use agents (and when NOT to)"
+      - "Pattern: prompt chaining & routing"
+      - "Pattern: parallelization & orchestrator-workers"
+      - "Pattern: evaluator-optimizer loop"
+      - "Real-world case studies from Anthropic customers"
+    related_chapters:
+      - "06-rag-and-agents"
+      - "10-ai-engineering-architecture"
+      - "05-prompt-engineering"
