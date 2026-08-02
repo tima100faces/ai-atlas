@@ -151,8 +151,9 @@ export default function Reader({ onNavigate, initialChapterId, initialLanguage }
       }
     }
 
-    // Strip first H1 heading (chapter title) — shown in chapter header already
-    cleaned = cleaned.replace(/^# .+\n+/, '')
+    // Strip HTML comments and first heading (H1/H2) — shown in chapter header already
+    cleaned = cleaned.replace(/^<!--.+?-->\s*/s, '')
+    cleaned = cleaned.replace(/^#{1,2}\s+.+\n+/, '')
 
     // Basic rendering: code blocks, headers, bold, italic, links
     let html = cleaned
@@ -226,7 +227,7 @@ export default function Reader({ onNavigate, initialChapterId, initialLanguage }
               const p = progress[ch.id]
               const lp = p?.language_progress?.[language]
               const isActive = activeChapter?.id === ch.id
-              const statusIcon = lp?.status === 'done' ? '✓' : lp?.status === 'in_progress' ? '○' : '·'
+              const statusIcon = lp?.status === 'done' ? '✓' : lp?.status === 'in_progress' ? '○' : String(ch.order)
 
               return (
                 <div
