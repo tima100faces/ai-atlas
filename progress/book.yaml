@@ -1,117 +1,104 @@
-updated_at: "2026-08-02T11:00:00+03:00"
-
-overall:
-  percent: 0
-  current_chapter_id: "01-introduction"
-  current_language: "en"
-
 chapters:
-  "00-preface":
-    status: "todo"
+  00-preface:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: test note
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "01-introduction":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  01-introduction:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "02-understanding-foundation-models":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  02-understanding-foundation-models:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "03-evaluation-methodology":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  03-evaluation-methodology:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "04-evaluate-ai-systems":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  04-evaluate-ai-systems:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "05-prompt-engineering":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  05-prompt-engineering:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "06-rag-and-agents":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  06-rag-and-agents:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "07-finetuning":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  07-finetuning:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "08-dataset-engineering":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  08-dataset-engineering:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "09-inference-optimization":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  09-inference-optimization:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
-
-  "10-ai-engineering-architecture":
-    status: "todo"
+        notes: ''
+        status: todo
+    status: todo
+  10-ai-engineering-architecture:
     language_progress:
       en:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
       ru:
-        status: "todo"
-        notes: ""
+        notes: ''
+        status: todo
+    status: todo
+overall:
+  current_chapter_id: 00-preface
+  current_language: en
+updated_at: '2026-08-02T12:42:34.544Z'

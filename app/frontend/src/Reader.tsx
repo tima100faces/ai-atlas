@@ -142,8 +142,20 @@ export default function Reader({ onNavigate, initialChapterId, initialLanguage }
 
   // Simple markdown-to-HTML renderer (for inline display)
   const renderMarkdown = (md: string) => {
+    // Strip YAML frontmatter if present
+    let cleaned = md
+    if (cleaned.startsWith('---\n')) {
+      const end = cleaned.indexOf('\n---\n', 4)
+      if (end !== -1) {
+        cleaned = cleaned.slice(end + 5)
+      }
+    }
+
+    // Strip first H1 heading (chapter title) — shown in chapter header already
+    cleaned = cleaned.replace(/^# .+\n+/, '')
+
     // Basic rendering: code blocks, headers, bold, italic, links
-    let html = md
+    let html = cleaned
       // Code blocks
       .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre class="code-block"><code>$2</code></pre>')
       // Inline code
