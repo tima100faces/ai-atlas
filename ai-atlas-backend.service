@@ -1,0 +1,17 @@
+[Unit]
+Description=AI Atlas Backend (FastAPI)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/ai-atlas/app/backend
+ExecStart=/root/ai-atlas/app/backend/venv/bin/python -m uvicorn main:app --host 0.0.0.0 --port 8001
+Restart=always
+RestartSec=5
+Environment=CONTENT_DIR=/root/ai-atlas/content
+Environment=PROGRESS_DIR=/root/ai-atlas/progress
+Environment=AI_ATLAS_PASSWORD=timohin2026
+
+[Install]
+WantedBy=multi-user.target
