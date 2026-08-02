@@ -124,7 +124,7 @@ export default function Courses({ onNavigate }: CoursesProps) {
 
   const getChapterTitle = (chId: string): string => {
     const ch = meta.find(c => c.id === chId)
-    return ch?.title?.ru || ch?.title?.en || chId
+    return ch?.title?.en || ch?.title?.ru || chId
   }
 
   const statusColor = (s: string): string => {
